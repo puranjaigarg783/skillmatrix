@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cb74a1b-512e-43ad-bf03-e717b8254479" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/emp_skill.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/emp_skill.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plogin/templates/proj_skill.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/proj_skill.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +47,14 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="700" y="330" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582991132825">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="700" y="330" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1582991132825" />
+    <state x="1148" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1582990796510">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1148" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582990796510" />
     <state x="1029" y="105" width="774" height="840" key="dock-window-1" timestamp="1582937996945">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

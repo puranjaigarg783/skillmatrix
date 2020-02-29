@@ -9,8 +9,11 @@
         <h1>Project Name:{{project.proj_name}}</h1>
 
         {% for i in proj_skill %}
-
-            <h2>Skill Name:{{pskill[loop.index0].skill_name}}</h2>
+            {% for j in pskill %}
+                {% if i.skill_id == j.skill_id %}
+                    <h2>{{j.skill_name}}</h2>
+                {% endif %}
+            {% endfor %}
             <h3>Skill ID:{{i.skill_id}}</h3>
             <h3>Skill Level:{{i.skill_range}}</h3>
             <h3>Project Rated Skill:{{i.proj_rated_rating}}</h3>
