@@ -5,6 +5,8 @@ from app.plogin.models import Project
 from app.plogin.models import Proj_skill
 from app.plogin.models import Emp_skill
 from app.plogin.models import Employee
+from app.plogin.models import Certification
+from app.plogin.models import Emp_cert
 
 import pprint
 
@@ -27,4 +29,7 @@ def edetails(eid):
     eskill = Skill.query.filter(Skill.skill_id.in_(ls)).all()
     pr = employee.geteProjID()
     projt = Project.query.filter_by(proj_id = pr).first()
-    return render_template('emp_skill.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt)
+    emp_cert = Emp_cert.query.filter_by(emp_id=eid).all()
+    lt = [emp_cert[i].geteCertId() for i in range(0, len(emp_cert))]
+    ecert = Certification.query.filter(Certification.cert_id.in_(lt)).all()
+    return render_template('emp_skill.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert)

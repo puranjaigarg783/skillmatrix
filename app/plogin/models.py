@@ -112,3 +112,34 @@ class Emp_skill(db.Model):
 
     def geteSkillId(self):
         return self.skill_id
+
+class Certification(db.Model):
+    __tablename__ = 'certification'
+
+    cert_id = db.Column(db.Integer, primary_key=True)
+    cert_name = db.Column(db.String(80), nullable=False)
+    cert_link = db.Column(db.String(200), nullable=False)
+
+
+    def __init__(self, cert_id, cert_name, cert_link):
+        self.cert_name = cert_name
+        self.cert_id = cert_id
+        self.cert_link = cert_link
+
+class Emp_cert(db.Model):
+    __tablename__ = 'emp_cert'
+
+    emp_cert_id = db.Column(db.Integer, primary_key=True)
+    emp_id = db.Column(db.String(80), nullable=False)
+    cert_id = db.Column(db.String(200), nullable=False)
+
+
+    def __init__(self, emp_cert_id, emp_id, cert_id):
+        self.emp_cert_id = emp_cert_id
+        self.cert_id = cert_id
+        self.emp_id = emp_id
+
+
+    def geteCertId(self):
+        return self.cert_id
+
