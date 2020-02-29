@@ -7,6 +7,9 @@ from app.plogin.models import Emp_skill
 from app.plogin.models import Employee
 from app.plogin.models import Certification
 from app.plogin.models import Emp_cert
+from sqlalchemy import func
+from sqlalchemy.sql import label
+
 
 import pprint
 
@@ -32,4 +35,5 @@ def edetails(eid):
     emp_cert = Emp_cert.query.filter_by(emp_id=eid).all()
     lt = [emp_cert[i].geteCertId() for i in range(0, len(emp_cert))]
     ecert = Certification.query.filter(Certification.cert_id.in_(lt)).all()
-    return render_template('emp_skill.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert)
+    avgskill = db.session.query(Emp_skill.skill_id,label('askill',func.avg(Emp_skill.final_rating))).group_by(Emp_skill.skill_id).all()
+    return render_template('emp_skill.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill)

@@ -26,6 +26,11 @@
     Project Lead Rating{{i.proj_lead_rating}} <br><br>
     Self Evaluation Rating:{{i.self_eval_rating}} <br><br>
     Experience in this Technology:{{i.experience}} <br><br>
+        {% for j in avgskill %}
+            {% if i.skill_id == j.skill_id %}
+                <h2>Average Skill Level:{{j.askill}}</h2>
+            {% endif %}
+        {% endfor %}
     {% endfor %}
 
       <h4> Certification </h4>

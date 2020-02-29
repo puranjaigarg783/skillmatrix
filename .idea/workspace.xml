@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cb74a1b-512e-43ad-bf03-e717b8254479" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plogin/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/plogin/templates/emp_skill.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/emp_skill.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
