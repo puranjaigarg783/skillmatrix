@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cb74a1b-512e-43ad-bf03-e717b8254479" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/proj_skill.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/proj_skill.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plogin/templates/emp_skill.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/emp_skill.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

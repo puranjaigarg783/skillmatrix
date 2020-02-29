@@ -17,7 +17,11 @@
     <h4> SkillSet </h4>
 
     {% for i in emp_skill %}
-    <h3>Skill Name:{{eskill[loop.index0].skill_name}}</h3><br><br>
+        {% for j in eskill %}
+            {% if i.skill_id == j.skill_id %}
+                <h2>{{j.skill_name}}</h2>
+            {% endif %}
+        {% endfor %}
     Skill Level:{{i.skill_range}} <br><br>
     Project Lead Rating{{i.proj_lead_rating}} <br><br>
     Self Evaluation Rating:{{i.self_eval_rating}} <br><br>
