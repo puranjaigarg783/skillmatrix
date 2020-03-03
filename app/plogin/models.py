@@ -6,11 +6,15 @@ class Project(db.Model):
 
     proj_id = db.Column(db.Integer, primary_key=True)
     proj_name = db.Column(db.String(80), nullable=False)
+    emp_id =  db.Column(db.Integer)
 
-    def __init__(self, proj_id, proj_name):
+    def __init__(self, proj_id, proj_name, emp_id):
         self.proj_name = proj_name
         self.proj_id = proj_id
+        self.emp_id = emp_id
 
+    def getprojid(self):
+        return self.proj_id
     # def __repr__(self):
     #     return 'The project id and name is {} and {} respectively'.format(self.proj_id,self.proj_name)
 

@@ -16,6 +16,11 @@ class Emp_details(UserMixin,db.Model):
         self.emp_password = emp_password
         self.auth = auth
 
+    def getemppw(self):
+        return self.emp_password
+
+    def getauth(self):
+        return self.auth
 
 @login_manager.user_loader
 def load_user(emp_id):
