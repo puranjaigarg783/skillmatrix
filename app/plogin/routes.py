@@ -36,4 +36,4 @@ def edetails(eid):
     lt = [emp_cert[i].geteCertId() for i in range(0, len(emp_cert))]
     ecert = Certification.query.filter(Certification.cert_id.in_(lt)).all()
     avgskill = db.session.query(Emp_skill.skill_id,label('askill',func.avg(Emp_skill.final_rating))).group_by(Emp_skill.skill_id).all()
-    return render_template('emp_skill.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill)
+    return render_template('b_version.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill)

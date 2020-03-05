@@ -87,6 +87,8 @@ class Employee(db.Model):
     def geteProjID(self):
         return self.proj_id
 
+    def geteID(self):
+        return self.emp_id
 
 
 class Emp_skill(db.Model):
@@ -98,7 +100,7 @@ class Emp_skill(db.Model):
     skill_range = db.Column(db.Integer)
     proj_lead_rating = db.Column(db.Integer)
     self_eval_rating = db.Column(db.Integer)
-    experience = db.Column(db.Integer)
+    experience = db.Column(db.Float)
     final_rating = db.Column(db.Integer)
 
 

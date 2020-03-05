@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    <br>{{filter_form.skill.label}}
+    <br>{{filter_form.skill}}
+    <br>{{filter_form.submit}}
+</form>
+{% if emp_skill %}
+    {% for i in emp_skill %}
+        <br>{{i.emp_id}}
+    {% endfor %}
+{% endif %}
+</body>
+</html>

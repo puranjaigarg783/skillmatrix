@@ -25,5 +25,7 @@ def create_app(config_type):
     from app.auth import authn
     app.register_blueprint(authn)
 
+    from app.filter import filtr
+    app.register_blueprint(filtr)
 
     return app

@@ -14,16 +14,13 @@ def log_in():
     emp_details = Emp_details.query.filter_by(emp_id = login_form.log_id.data).first()
     if request.method == 'POST':
         if not emp_details or login_form.log_pw.data != emp_details.getemppw():
-            print('0')
             return redirect(url_for('authn.log_in'))
         if emp_details.getauth() == 2:
-            print('1')
             return redirect(url_for('pdash.edetails', eid=login_form.log_id.data))
         elif emp_details.getauth() == 1:
-            print('2')
             project = Project.query.filter_by(emp_id = login_form.log_id.data).first()
             return  redirect(url_for('pdash.pdetails',pid = project.getprojid()))
-    return render_template('logging.html', login_form = login_form)
+    return render_template('login.html', login_form = login_form)
 
 
 
