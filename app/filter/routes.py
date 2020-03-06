@@ -17,8 +17,8 @@ def efilter():
     filter_form.skill.choices = [(skill.skill_id,skill.skill_name) for skill in Skill.query.all()]
     #filter_form.exp.choices = [(emp_skill.experience, emp_skill.experience) for emp_skill in Emp_skill.query.filter_by(skill_id = filter_form.skill.data)]
     if request.method == 'POST':
-        emp_skill = Emp_skill.query.filter_by(skill_id = filter_form.skill.data).all()
-    return render_template('efilter.html', filter_form = filter_form)
+        emp_skill = Emp_skill.query.filter_by(skill_id = filter_form.skill.data).filter_by(experience = filter_form.exp.data).all()
+    return render_template('efilter.html', filter_form = filter_form, emp_skill = emp_skill)
 
 @filtr.route('/efilter/<skill>')
 def exp(skill):
