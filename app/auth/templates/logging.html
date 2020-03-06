@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% block content %}
 <form action='/' method="POST">
-    {{ form.hidden_tag() }}
+    {{ login_form.hidden_tag() }}
 <span class="login100-form-title">
 						Member Login
 					</span>
@@ -21,13 +21,13 @@
 
     </div>
             <div class="container-login100-form-btn">
-             {{ form.submit ( class="login100-form-btn") }}
+             {{ login_form.submit ( class="login100-form-btn") }}
             </div>
                  <div class="text-center p-t-12">
 						<span class="txt1">
 							Forgot
 						</span>
-						<a class="txt2" href="{{url_for('login')}}">
+						<a class="txt2" href="{{url_for('authn.log_in')}}">
 							Username / Password?
 						</a>
                  </div>
