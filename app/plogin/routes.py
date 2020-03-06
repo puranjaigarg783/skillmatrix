@@ -23,7 +23,7 @@ def pdetails(pid):
     ls = [proj_skill[i].getpSkillId() for i in range(0,len(proj_skill))]
     empl = Employee.query.filter_by(proj_id = pid ).all()
     pskill = Skill.query.filter(Skill.skill_id.in_(ls)).all()
-    return render_template('a_version.html', proj_skill=proj_skill, project = project, pskill = pskill, empl = empl)
+    return render_template('proj_skill.html', proj_skill=proj_skill, project = project, pskill = pskill, empl = empl)
 
 @pdash.route('/employee/<eid>', methods = ['GET','POST'])
 def edetails(eid):
@@ -37,10 +37,10 @@ def edetails(eid):
     lt = [emp_cert[i].geteCertId() for i in range(0, len(emp_cert))]
     ecert = Certification.query.filter(Certification.cert_id.in_(lt)).all()
     avgskill = db.session.query(Emp_skill.skill_id,label('askill',func.avg(Emp_skill.final_rating))).group_by(Emp_skill.skill_id).all()
-    return render_template('ed.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill, Project = Project)
+    return render_template('emp_skill.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill, Project = Project)
 
 
 @pdash.route('/allprojects')
 def allproj():
     project = Project.query.all()
-    return render_template('otherproject.html', project = project)
+    return render_template('all_proj.html', project = project)
