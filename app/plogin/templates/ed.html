@@ -42,6 +42,6 @@
      <h4><a href={{i.cert_link}}>{{i.cert_name}}</a></h4>
     {% endfor %}
     <br>
-    <button onclick="window.location.href = 'otherproject.html';" type="button" class="btn btn-primary" style="background-color: skyblue;color:white;">Other Projects</button>
+    <p><a href="{{ url_for('pdash.allproj')}}">Explore All Projects</a> </p>
 </body>
 </html>

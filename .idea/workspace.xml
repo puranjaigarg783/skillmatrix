@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="6cb74a1b-512e-43ad-bf03-e717b8254479" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/templates/logging.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/filter/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/filter/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/filter/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/filter/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/filter/templates/efilter.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/filter/templates/efilter.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/plogin/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plogin/templates/ed.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/ed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plogin/templates/otherproject.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/otherproject.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/otherproject.html" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -62,10 +64,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1220" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583413224424" />
-    <state x="1148" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1583217879111">
+    <state x="0" y="169" key="SettingsEditor" timestamp="1583478472406">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1148" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583217879111" />
+    <state x="0" y="169" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1583478472406" />
+    <state x="1148" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1583437816440">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1148" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583437816440" />
     <state x="1251" y="442" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583149158849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -78,9 +84,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1029" y="105" width="774" height="840" key="dock-window-2/0.0.1920.1040@0.0.1920.1040" timestamp="1582937996945" />
-    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1583299943118">
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1583481078915">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583299943118" />
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583481078915" />
   </component>
 </project>

@@ -8,12 +8,30 @@
 <form method="post">
     <br>{{filter_form.skill.label}}
     <br>{{filter_form.skill}}
-    <br>{{filter_form.submit}}
+    <br>{{filter_form.exp.label}}
+    <br>{{filter_form.exp}}
+    <input type = "submit">
 </form>
-{% if emp_skill %}
-    {% for i in emp_skill %}
-        <br>{{i.emp_id}}
-    {% endfor %}
-{% endif %}
+    <script>
+        let skill_select = document.getElementById("skill")
+        let exp_select = document.getElementById("exp");
+
+        skill_select.onchange = function(){
+            skill = skill_select.value;
+            fetch('/efilter/' + skill).then(function(response){
+                response.json().then(function(data){
+                    console.log(data)
+                    alert(data['experience'][0]['exp']);
+                    alert(data['experience'][1]['exp']);
+<!--                    alert([data['experience'][i]['exp'] for i in range(len(data))])-->
+                    let optionHTML = '';
+                    for(let exp of data.experience){
+                        optionHTML += '<option value="' + exp.exp + '">' + exp.exp + '</option>';
+                    }
+                    exp_select.innerHTML = optionHTML;
+                });
+            });
+        }
+    </script>
 </body>
 </html>
