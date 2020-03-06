@@ -1,18 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form action="/" method="post">
-    <br>{{login_form.log_id.label}}
-    <br>{{login_form.log_id}}
-    <br>{{login_form.log_pw.label}}
-    <br>{{login_form.log_pw}}
-    <br>{{login_form.submit}}
+{% extends "index.html" %}
+{% block content %}
+<form action='/' method="POST">
+    {{ form.hidden_tag() }}
+<span class="login100-form-title">
+						Member Login
+					</span>
 
-</form>
+    <div class="wrap-input100 validate-input">
+        {{ login_form.log_id (class="input100",placeholder="User Id") }}
+        <span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="false"></i>
+						</span>
+    </div>
+        <div class="wrap-input100 validate-input" data-validate = "Password is required">
 
-</body>
-</html>
+         {{ login_form.log_pw (class="input100",placeholder="Password") }}
+        <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+
+    </div>
+            <div class="container-login100-form-btn">
+             {{ form.submit ( class="login100-form-btn") }}
+            </div>
+                 <div class="text-center p-t-12">
+						<span class="txt1">
+							Forgot
+						</span>
+						<a class="txt2" href="{{url_for('login')}}">
+							Username / Password?
+						</a>
+                 </div>
+    </form>
+{% endblock content %}

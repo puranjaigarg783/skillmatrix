@@ -18,12 +18,10 @@ def create_app(config_type):
     login_manager.init_app(app)
     bcrypt.init_app(app)
 
-
     from app.plogin import pdash
     app.register_blueprint(pdash)
 
     from app.auth import authn
     app.register_blueprint(authn)
-
 
     return app
