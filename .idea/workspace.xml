@@ -3,14 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6cb74a1b-512e-43ad-bf03-e717b8254479" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/a_version.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/b_version.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/ed.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/emp_skill.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/otherproject.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/proj_skill.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/filter/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/filter/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/filter/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/filter/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/filter/templates/efilter.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/filter/templates/efilter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plogin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

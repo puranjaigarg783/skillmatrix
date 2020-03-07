@@ -119,6 +119,10 @@ class Emp_skill(db.Model):
     def geteSkillId(self):
         return self.skill_id
 
+
+    def getEmpId(self):
+        return self.emp_id
+
 class Certification(db.Model):
     __tablename__ = 'certification'
 

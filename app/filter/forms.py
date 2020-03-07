@@ -3,7 +3,7 @@ from wtforms import StringField, SubmitField, IntegerField, PasswordField, Boole
 from wtforms.validators import DataRequired
 
 
-class Filter_form(FlaskForm):
+class Emp_filter_form(FlaskForm):
     skill = SelectField('Skills', choices = [])
     exp = SelectField('Experience', choices = [])
 

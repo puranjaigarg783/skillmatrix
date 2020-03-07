@@ -6,10 +6,10 @@
 </head>
 <body>
 <form method="post">
-    <br>{{filter_form.skill.label}}
-    <br>{{filter_form.skill}}
-    <br>{{filter_form.exp.label}}
-    <br>{{filter_form.exp}}
+    <br>{{emp_filter_form.skill.label}}
+    <br>{{emp_filter_form.skill}}
+    <br>{{emp_filter_form.exp.label}}
+    <br>{{emp_filter_form.exp}}
     <br><input type = "submit">
 </form>
     <script>
@@ -36,7 +36,11 @@
 
     {% if emp_skill %}
         {% for i in emp_skill %}
-            <br>{{i.emp_id}}
+            {% for j in employee %}
+                {% if i.emp_id == j.emp_id %}
+                    <p><a href="{{ url_for('pdash.edetails',eid = i.emp_id)}}">{{j.emp_name}}</a> </p>
+                {% endif %}
+            {% endfor %}
         {% endfor%}
     {% endif %}
 </body>
