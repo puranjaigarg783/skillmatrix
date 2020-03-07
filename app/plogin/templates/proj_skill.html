@@ -31,6 +31,9 @@
         {% for i in empl %}
             <p><a href="{{ url_for('pdash.edetails',eid = i.emp_id)}}">{{i.emp_name}}</a> </p>
         {% endfor %}
+         <br><br>
+         <p><a href="{{ url_for('filtr.efilter')}}">Search Employees by Skill</a> </p>
+
 
 
 </body>
