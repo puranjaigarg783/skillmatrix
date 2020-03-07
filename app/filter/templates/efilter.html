@@ -10,11 +10,14 @@
     <br>{{emp_filter_form.skill}}
     <br>{{emp_filter_form.exp.label}}
     <br>{{emp_filter_form.exp}}
+    <br>{{emp_filter_form.range.label}}
+    <br>{{emp_filter_form.range}}
     <br><input type = "submit">
 </form>
     <script>
         let skill_select = document.getElementById("skill")
         let exp_select = document.getElementById("exp");
+        let range_select =document.getElementById("range");
 
         skill_select.onchange = function(){
             skill = skill_select.value;
@@ -32,6 +35,20 @@
                 });
             });
         }
+
+        exp_select.onchange = function(){
+            exp = exp_select.value;
+            fetch('/efilter/' + skill + '/' + exp).then(function(response){
+                response.json().then(function(data){
+                    let optionHTML = '';
+                    for(let range of data.range){
+                        optionHTML += '<option value="' + range.range + '">' + range.range + '</option>';
+                    }
+                    range_select.innerHTML = optionHTML;
+                });
+            });
+        }
+
     </script>
 
     {% if emp_skill %}

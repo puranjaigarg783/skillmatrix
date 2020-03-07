@@ -18,7 +18,9 @@ def efilter():
     emp_filter_form.skill.choices = [(skill.skill_id,skill.skill_name) for skill in Skill.query.all()]
     #filter_form.exp.choices = [(emp_skill.experience, emp_skill.experience) for emp_skill in Emp_skill.query.filter_by(skill_id = filter_form.skill.data)]
     if request.method == 'POST':
-        emp_skill = Emp_skill.query.filter_by(skill_id = emp_filter_form.skill.data).filter_by(experience = emp_filter_form.exp.data).all()
+        # emp_skill = Emp_skill.query.filter_by(skill_id = emp_filter_form.skill.data).filter_by(experience = emp_filter_form.exp.data).all()
+        emp_skill = Emp_skill.query.filter_by(skill_id = emp_filter_form.skill.data).filter_by(experience = emp_filter_form.exp.data).filter_by(skill_range = emp_filter_form.range.data).all()
+
         employee = Employee.query.all()
     return render_template('efilter.html', emp_filter_form = emp_filter_form, emp_skill = emp_skill, employee = employee)
 
@@ -34,3 +36,15 @@ def exp(skill):
         ls.append(expobj)
 
     return jsonify({'experience': ls})
+
+@filtr.route('/efilter/<skill>/<exp>')
+def range(skill,exp):
+    emp_details = Emp_skill.query.filter_by(skill_id = skill).filter_by(experience = exp).all()
+    ls = []
+
+    for range in emp_details:
+        rangeobj = {}
+        rangeobj['range'] = range.skill_range
+        ls.append(rangeobj)
+
+    return jsonify({'range':ls})

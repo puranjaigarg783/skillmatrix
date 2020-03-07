@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/app/filter/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/filter/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/filter/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/filter/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/filter/templates/efilter.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/filter/templates/efilter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
