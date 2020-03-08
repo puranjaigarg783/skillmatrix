@@ -43,4 +43,21 @@ def edetails(eid):
 @pdash.route('/allprojects')
 def allproj():
     project = Project.query.all()
-    return render_template('all_proj.html', project = project)
+    proj_skill = Proj_skill.query.all()
+    skill = Skill.query.all()
+    return render_template('all_proj.html', project = project, proj_skill = proj_skill, skill = skill)
+
+@pdash.route('/skill/<sid>')
+def sdetails(sid):
+    skill = Skill.query.filter_by(skill_id = sid).all()
+    proj_skill = db.session.query(Proj_skill.skill_id,label('ptotal',func.count(Proj_skill.proj_id))).group_by(Proj_skill.skill_id).all()
+    emp_skill = db.session.query(Emp_skill.skill_id, label('etotal',func.count(Emp_skill.emp_id))).group_by(Emp_skill.skill_id).all()
+    emp_avgskill = db.session.query(Emp_skill.skill_id,label('askill',func.avg(Emp_skill.final_rating))).group_by(Emp_skill.skill_id).all()
+    proj_prsent_avgskill = db.session.query(Proj_skill.skill_id,label('proj_prsent_avgskill',func.avg(Proj_skill.proj_prsent_skill_rating))).group_by(Proj_skill.skill_id).all()
+    proj_rated_avgskill = db.session.query(Proj_skill.skill_id,label('proj_rated_avgskill',func.avg(Proj_skill.proj_rated_rating))).group_by(Proj_skill.skill_id).all()
+    return render_template('skill_dash.html', skill= skill,proj_skill=proj_skill,emp_skill=emp_skill,emp_avgskill=emp_avgskill,proj_prsent_avgskill=proj_prsent_avgskill,proj_rated_avgskill=proj_rated_avgskill)
+
+
+
+
+

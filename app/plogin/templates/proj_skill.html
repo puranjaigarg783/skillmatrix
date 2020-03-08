@@ -17,7 +17,7 @@
         {% for i in proj_skill %}
             {% for j in pskill %}
                 {% if i.skill_id == j.skill_id %}
-                    <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;">{{j.skill_name}}</h2>
+        <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;"><a href = "{{url_for('pdash.sdetails', sid = j.skill_id)}}">{{j.skill_name}}</a></h2>
                 {% endif %}
             {% endfor %}
             <h3 style="margin-top:1.5%;">Skill ID:{{i.skill_id}}</h3>

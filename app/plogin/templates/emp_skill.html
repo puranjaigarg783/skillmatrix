@@ -21,7 +21,7 @@
     {% for i in emp_skill %}
         {% for j in eskill %}
             {% if i.skill_id == j.skill_id %}
-    <h1 style="color:black;margin-left:0%;font-size:x-large;font-style: italic;"><b>{{j.skill_name}}</b></h1>
+                <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;"><a href = "{{url_for('pdash.sdetails', sid = j.skill_id)}}">{{j.skill_name}}</a></h2>
             {% endif %}
         {% endfor %}
     

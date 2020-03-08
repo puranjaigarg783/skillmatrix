@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for i in skill %}
+        <br><br><br>{{i.skill_name}}
+        {% for j in proj_skill %}
+            {% if i.skill_id == j.skill_id %}
+                <br>Total Projects employing this skill:{{j.ptotal}}
+            {% endif %}
+        {% endfor %}
+        {% for j in emp_skill %}
+            {% if i.skill_id == j.skill_id %}
+                <br>Total Employees employing this skill:{{j.etotal}}
+            {% endif %}
+        {% endfor %}
+        {% for j in emp_avgskill %}
+            {% if i.skill_id == j.skill_id %}
+                <br>Average Employee skill rating:{{j.askill}}
+            {% endif %}
+        {% endfor %}
+        {% for j in proj_prsent_avgskill %}
+            {% if i.skill_id == j.skill_id %}
+                <br>Average Project Present Skill Rating:{{j.proj_prsent_avgskill}}
+            {% endif %}
+        {% endfor %}
+        {% for j in proj_rated_avgskill %}
+            {% if i.skill_id == j.skill_id %}
+                <br>Average Project Rated Skill Rating:{{j.proj_rated_avgskill}}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</body>
+</html>

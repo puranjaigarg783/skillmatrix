@@ -16,11 +16,8 @@ def efilter():
     employee = None
     emp_filter_form = Emp_filter_form()
     emp_filter_form.skill.choices = [(skill.skill_id,skill.skill_name) for skill in Skill.query.all()]
-    #filter_form.exp.choices = [(emp_skill.experience, emp_skill.experience) for emp_skill in Emp_skill.query.filter_by(skill_id = filter_form.skill.data)]
     if request.method == 'POST':
-        # emp_skill = Emp_skill.query.filter_by(skill_id = emp_filter_form.skill.data).filter_by(experience = emp_filter_form.exp.data).all()
-        emp_skill = Emp_skill.query.filter_by(skill_id = emp_filter_form.skill.data).filter_by(experience = emp_filter_form.exp.data).filter_by(skill_range = emp_filter_form.range.data).all()
-
+        emp_skill = Emp_skill.query.filter_by(skill_id = emp_filter_form.skill.data).filter_by(experience = emp_filter_form.exp.data).filter_by(skill_range = emp_filter_form.range.data).order_by(Emp_skill.final_rating.desc()).all()
         employee = Employee.query.all()
     return render_template('efilter.html', emp_filter_form = emp_filter_form, emp_skill = emp_skill, employee = employee)
 
