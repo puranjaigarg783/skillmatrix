@@ -28,4 +28,7 @@ def create_app(config_type):
     from app.filter import filtr
     app.register_blueprint(filtr)
 
+    from app.edit import edit
+    app.register_blueprint(edit)
+
     return app
