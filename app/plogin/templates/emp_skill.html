@@ -24,10 +24,10 @@
                 <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;"><a href = "{{url_for('pdash.sdetails', sid = j.skill_id)}}">{{j.skill_name}}</a></h2>
             {% endif %}
         {% endfor %}
-    
-   <div  style="margin-left:20% ;margin-top: 3%;"> Skill Level:{{i.skill_range}} <br><br></div>
+
+   <div  style="margin-left:20% ;margin-top: 3%;"> Skill Level:{{i.skill_range}}<br><br></div>
    <div  style="margin-left:35%;margin-top: -1.8%;"> Project Lead Rating{{i.proj_lead_rating}}<br><a href = "{{url_for('edit.lrating', eid = i.emp_id , sid = i.skill_id )}}">Edit</a><br><br></div>
-   <div style="margin-left: 58.5%;margin-top: -1.8%;">Self Rating:{{i.self_eval_rating}}<br><a href = "{{url_for('edit.srating', eeid = i.emp_id , ssid = i.skill_id )}}">Edit</a><br><br><br></div>
+   <div style="margin-left: 58.5%;margin-top: -1.9%;">Self Rating:{{i.self_eval_rating}}<br><a href = "{{url_for('edit.srating', eeid = i.emp_id , ssid = i.skill_id )}}">Edit</a><br><br><br></div>
    <div style="margin-left: 77%;margin-top: -1.8%;">Experience :{{i.experience}} <br><br></div>
         {% for j in avgskill %}
             {% if i.skill_id == j.skill_id %}

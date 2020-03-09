@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter search</title>
+</head>
+<style>
+    .container {
+  padding: 8px 300px;
+  margin:1%;
+}
+
+  form {border: 5px solid #f1f1f1;
+      font-size: large;
+
+}
+button {
+  background-color: skyblue;
+  color: white;
+  padding: 15px 20px;
+  margin: 1%;
+  border: none;
+  cursor: pointer;
+  width: 80%;
+}
+button:hover {
+  opacity: 0.8;
+}
+</style>
+<body>
+     <img src="https://media-exp1.licdn.com/dms/image/C510BAQEdUdCiIiDiTQ/company-logo_200_200/0?e=2159024400&v=beta&t=ASmV3FDXKuTfeeBwuIV8wK2hhT2Uko-x1dR5OUs-ZtM" style="width: 9.5%; height: 8%;"></img>
+    <div style="margin-left:10%; height: 20%;">
+    <b> <h4 style="background-color:skyblue;margin-top: -10%;padding:1.8%;font-family: 'Times New Roman', Times, serif; text-align: center;">FILTER SEARCH</h4></b>
+
+<div class="container">
+<form method="POST">
+  <pre>
+  <b style="margin-left: 13%">{{emp_filter_form.skill.label}} :</b>
+  <b style="margin-left: 13%">{{emp_filter_form.skill}}</b>
+  <br>
+  <b style="margin-left: 13%">{{emp_filter_form.exp.label}} :</b>
+  <b style="margin-left: 13%">{{emp_filter_form.exp}}</b>
+  <br>
+  <b style="margin-left: 13%">{{emp_filter_form.range.label}} :</b>
+  <b style="margin-left: 13%">{{emp_filter_form.range}}</b>
+ <div class="form-group row">
+    <div class="col-sm-10 offset-sm-2">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+ </div>
+</div>
+</pre>
+</form>
+
+
+    <script>
+        let skill_select = document.getElementById("skill")
+        let exp_select = document.getElementById("exp");
+        let range_select =document.getElementById("range");
+
+        skill_select.onchange = function(){
+            skill = skill_select.value;
+            fetch('/efilter/' + skill).then(function(response){
+                response.json().then(function(data){
+                    console.log(data)
+<!--                    alert(data['experience'][0]['exp']);-->
+<!--                    alert(data['experience'][1]['exp']);-->
+<!--                    alert([data['experience'][i]['exp'] for i in range(len(data))])-->
+                    let optionHTML = '';
+                    for(let exp of data.experience){
+                        optionHTML += '<option value="' + exp.exp + '">' + exp.exp + '</option>';
+                    }
+                    exp_select.innerHTML = optionHTML;
+                });
+            });
+        }
+
+        exp_select.onchange = function(){
+            exp = exp_select.value;
+            fetch('/efilter/' + skill + '/' + exp).then(function(response){
+                response.json().then(function(data){
+                    let optionHTML = '';
+                    for(let range of data.range){
+                        optionHTML += '<option value="' + range.range + '">' + range.range + '</option>';
+                    }
+                    range_select.innerHTML = optionHTML;
+                });
+            });
+        }
+
+    </script>
+
+    {% if emp_skill %}
+        {% for i in emp_skill %}
+            {% for j in employee %}
+                {% if i.emp_id == j.emp_id %}
+        <p style="font-size: xx-large; margin-left:5%;"><b><a href="{{ url_for('pdash.edetails',eid = i.emp_id)}}">{{j.emp_name}}</a> </b></p>
+                {% endif %}
+            {% endfor %}
+        {% endfor%}
+    {% endif %}
+</body>
+</html>
