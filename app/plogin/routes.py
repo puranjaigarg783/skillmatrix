@@ -8,6 +8,7 @@ from app.plogin.models import Emp_skill
 from app.plogin.models import Employee
 from app.plogin.models import Certification
 from app.plogin.models import Emp_cert
+from app.plogin.models import Location
 from sqlalchemy import func
 from sqlalchemy.sql import label
 
@@ -18,17 +19,31 @@ from flask import render_template, redirect, url_for
 
 @pdash.route('/project/<pid>', methods = ['GET','POST'])
 def pdetails(pid):
-    project = Project.query.filter_by(proj_id =  pid ).first()
-    proj_skill = Proj_skill.query.filter_by(proj_id =  pid).all()
-    ls = [proj_skill[i].getpSkillId() for i in range(0,len(proj_skill))]
     empl = Employee.query.filter_by(proj_id = pid ).all()
+    proj_skill = Proj_skill.query.filter_by(proj_id =  pid).all()
+    lr = [empl[i].geteID() for i in range(0,len(empl))]
+    avg_emp_skill = db.session.query(Emp_skill.skill_id,label('avg_emp_skill',func.avg(Emp_skill.final_rating))).filter(Emp_skill.emp_id.in_(lr)).group_by(Emp_skill.skill_id).all()
+    for i in proj_skill:
+        for j in avg_emp_skill:
+            if i.skill_id == j.skill_id:
+                i.proj_prsent_skill_rating = j.avg_emp_skill
+                db.session.add(i)
+                db.session.commit()
+    project = Project.query.filter_by(proj_id =  pid ).first()
+    ls = [proj_skill[i].getpSkillId() for i in range(0,len(proj_skill))]
     pskill = Skill.query.filter(Skill.skill_id.in_(ls)).all()
     return render_template('proj_skill.html', proj_skill=proj_skill, project = project, pskill = pskill, empl = empl)
 
 @pdash.route('/employee/<eid>', methods = ['GET','POST'])
 def edetails(eid):
+    location = Location.query.all()
     employee = Employee.query.filter_by(emp_id = eid).first()
     emp_skill = Emp_skill.query.filter_by(emp_id = eid).all()
+
+    for i in emp_skill:
+        i.final_rating = i.proj_lead_rating + i.self_eval_rating + i.experience
+        db.session.add(i)
+        db.session.commit()
     ls = [emp_skill[i].geteSkillId() for i in range(0,len(emp_skill))]
     eskill = Skill.query.filter(Skill.skill_id.in_(ls)).all()
     pr = employee.geteProjID()
@@ -37,7 +52,7 @@ def edetails(eid):
     lt = [emp_cert[i].geteCertId() for i in range(0, len(emp_cert))]
     ecert = Certification.query.filter(Certification.cert_id.in_(lt)).all()
     avgskill = db.session.query(Emp_skill.skill_id,label('askill',func.avg(Emp_skill.final_rating))).group_by(Emp_skill.skill_id).all()
-    return render_template('emp_skill.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill, Project = Project)
+    return render_template('new3_emp.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill, Project = Project, location = location)
 
 
 @pdash.route('/allprojects')

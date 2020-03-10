@@ -1,5 +1,18 @@
 from app import db
 
+class Location(db.Model):
+    __tablename__ = 'location'
+
+    loc_id = db.Column(db.Integer, primary_key=True)
+    loc_name = db.Column(db.String(80), nullable=False)
+
+
+    def __init__(self, loc_id, loc_name):
+        self.loc_name = loc_name
+        self.loc_id = loc_id
+    #
+
+
 
 class Project(db.Model):
     __tablename__ = 'project'
@@ -73,16 +86,18 @@ class Employee(db.Model):
     emp_desg_id = db.Column(db.Integer)
     emp_role = db.Column(db.String(80), nullable=False)
     experience = db.Column(db.String(80), nullable=False)
-    proj_id = db.Column(db.Integer, primary_key=True)
+    proj_id = db.Column(db.Integer)
+    loc_id = db.Column(db.Integer)
 
 
-    def __init__(self, emp_id, emp_name, emp_desg_id, emp_role, experience,proj_id):
+    def __init__(self, emp_id, emp_name, emp_desg_id, emp_role, experience,proj_id, loc_id):
         self.emp_name = emp_name
         self.emp_id = emp_id
         self.emp_desg_id = emp_desg_id
         self.emp_role = emp_role
         self.experience = experience
         self.proj_id = proj_id
+        self.loc_id = loc_id
 
     def geteProjID(self):
         return self.proj_id
@@ -122,6 +137,7 @@ class Emp_skill(db.Model):
 
     def getEmpId(self):
         return self.emp_id
+
 
 class Certification(db.Model):
     __tablename__ = 'certification'

@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6cb74a1b-512e-43ad-bf03-e717b8254479" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/filter/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/filter/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plogin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/plogin/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/plogin/templates/emp_skill.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/emp_skill.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/skill_dash.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/skill_dash.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +65,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="169" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1583588387910" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1583839290195">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1583839290195" />
     <state x="1148" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1583602332912">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
