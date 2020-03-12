@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>login</title>
+    </head>
+    <body>
+<style>
+         button {
+  background-color:teal;
+  color: white;
+  padding: 15px 20px;
+  margin: 1%;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}
+button:hover {
+  opacity: 0.8;
+}
+
+.myc{
+    margin-left: 33%;
+    margin-top: 7%;
+}
+input[type=text], input[type=password]{
+width:30%;
+padding:15px 20px;
+margin:1%;
+display:inline-block;
+border: 1px solid teal;
+box-sizing: border-box
+}
+</style>
+        <div style="background-color:teal;width: 30%;height: 100%;">
+            <img src="https://media-exp1.licdn.com/dms/image/C510BAQEdUdCiIiDiTQ/company-logo_200_200/0?e=2159024400&v=beta&t=ASmV3FDXKuTfeeBwuIV8wK2hhT2Uko-x1dR5OUs-ZtM" style="width:55%; height:40%;margin-left:22%;margin-top:45%"></img>
+        </div>
+            <div style="background-color:lightgreen;margin-top: -47.7%;padding: 2%;width: 66.3%;margin-left: 30%;"><h1 style="padding-left: 30%;color:black;font-family: sans-serif;">SKILL MATRIX </h1></div>
+            <h2 style="margin-left: 56%;margin-top: 4%;color:black;font-family: sans-serif;"> LOGIN</h2>
+            <div class="myc">
+            <form action="/" method="POST">
+                <pre>
+                  <b style="margin-left: 17%;">{{login_form.log_id.label}} :</b>
+                    <br>
+                  <b style="margin-left: 16%;margin-top:1%;">{{login_form.log_id}}</b>
+                  <br>
+                  <b style="margin-left: 14%">{{login_form.log_pw.label}} :</b>
+                  <br><b style="margin-left: 26%">{{login_form.log_pw}}</b>
+                 <div class="form-group row">
+                    <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">{{login_form.submit}}</button>
+                </div>
+            </div>
+            </pre>
+            </form>
+        </div>
+        </div>
+    </body>
+
+</html>

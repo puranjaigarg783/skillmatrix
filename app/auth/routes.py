@@ -20,7 +20,7 @@ def log_in():
         elif emp_details.getauth() == 1:
             project = Project.query.filter_by(emp_id = login_form.log_id.data).first()
             return  redirect(url_for('pdash.pdetails',pid = project.getprojid()))
-    return render_template('newlogin.html', login_form = login_form)
+    return render_template('namalogin.html', login_form = login_form)
 
 
 

@@ -61,50 +61,37 @@
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
     </script>
-
+<script src="../static/customchart.js"></script>
 </head>
 <body>
-
-    {% for i in skill %}
-        <br><br><br>{{i.skill_name}}<br>
-                                     <img src="../static/img/{{i.skill_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
-
-        {% for j in proj_skill %}
-            {% if i.skill_id == j.skill_id %}
-                <br>Total Projects employing this skill:{{j.ptotal}}
-            {% endif %}
-        {% endfor %}
-        {% for j in emp_skill %}
-            {% if i.skill_id == j.skill_id %}
-                <br>Total Employees employing this skill:{{j.etotal}}
-            {% endif %}
-        {% endfor %}
-        {% for j in emp_avgskill %}
-            {% if i.skill_id == j.skill_id %}
-                <br>Average Employee skill rating:{{j.askill}}
-            {% endif %}
-        {% endfor %}
-        {% for j in proj_prsent_avgskill %}
-            {% if i.skill_id == j.skill_id %}
-                <br>Average Project Present Skill Rating:{{j.proj_prsent_avgskill}}
-            {% endif %}
-        {% endfor %}
-        {% for j in proj_rated_avgskill %}
-            {% if i.skill_id == j.skill_id %}
-                <br>Average Project Rated Skill Rating:{{j.proj_rated_avgskill}}
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
-     <table class="columns">
-            <tr>
-<td>
- <div id="columnchart_material" style="width: 800px; height: 500px ;"></div>
-</td>
-<td>
-
-<div id="columnchart_material1" style="width: 800px; height: 500px;"></div>
-</td>
-            </tr>
-     </table>
+<table>
+    <tr>
+        <td>
+            <div id="chartContainer1" style="height: 360px; width: 100%;"></div>
+        </td>
+            <td>
+                <div id="chartContainer2" style="height: 30px; width: 100%;"></div>
+            </td>
+                <td>
+                    <div id="chartContainer3" style="height: 360px; width: 100%;"></div>
+                </td>
+                    <td>
+                        <div id="chartContainer4" style="height: 360px; width: 100%;">
+                    </td>
+                        <td>
+                            <div id="chartContainer5" style="height: 360px; width: 100%;"></div>
+                        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td>
+            <div id="columnchart_material" style="border: 1px solid #ccc"></div>
+        </td>
+            <td>
+                <div id="columnchart_material1" style="border: 1px solid #ccc"></div>
+            </td>
+    </tr>
+</table>
 </body>
 </html>

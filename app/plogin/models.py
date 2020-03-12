@@ -20,11 +20,14 @@ class Project(db.Model):
     proj_id = db.Column(db.Integer, primary_key=True)
     proj_name = db.Column(db.String(80), nullable=False)
     emp_id =  db.Column(db.Integer)
+    proj_image = db.Column(db.String(100), unique=True)
 
-    def __init__(self, proj_id, proj_name, emp_id):
+
+    def __init__(self, proj_id, proj_name, emp_id, proj_image):
         self.proj_name = proj_name
         self.proj_id = proj_id
         self.emp_id = emp_id
+        self.proj_image = proj_image
 
     def getprojid(self):
         return self.proj_id
@@ -36,11 +39,14 @@ class Skill(db.Model):
 
     skill_id = db.Column(db.Integer, primary_key=True)
     skill_name = db.Column(db.String(80), nullable=False)
+    skill_image = db.Column(db.String(100), unique=True)
 
 
-    def __init__(self, skill_id, skill_name):
+
+    def __init__(self, skill_id, skill_name, skill_image):
         self.skill_name = skill_name
         self.skill_id = skill_id
+        self.skill_image = skill_image
     #
     # def __repr__(self):
     #     return 'The project id and name is {} and {}'.format(self.skill_id,self.skill_name)
@@ -88,9 +94,11 @@ class Employee(db.Model):
     experience = db.Column(db.String(80), nullable=False)
     proj_id = db.Column(db.Integer)
     loc_id = db.Column(db.Integer)
+    emp_image = db.Column(db.String(100), unique=True)
 
 
-    def __init__(self, emp_id, emp_name, emp_desg_id, emp_role, experience,proj_id, loc_id):
+
+    def __init__(self, emp_id, emp_name, emp_desg_id, emp_role, experience,proj_id, loc_id, emp_image):
         self.emp_name = emp_name
         self.emp_id = emp_id
         self.emp_desg_id = emp_desg_id
@@ -98,6 +106,8 @@ class Employee(db.Model):
         self.experience = experience
         self.proj_id = proj_id
         self.loc_id = loc_id
+        self.emp_image = emp_image
+
 
     def geteProjID(self):
         return self.proj_id
@@ -145,12 +155,15 @@ class Certification(db.Model):
     cert_id = db.Column(db.Integer, primary_key=True)
     cert_name = db.Column(db.String(80), nullable=False)
     cert_link = db.Column(db.String(200), nullable=False)
+    cert_image = db.Column(db.String(100), unique=True)
 
 
-    def __init__(self, cert_id, cert_name, cert_link):
+
+    def __init__(self, cert_id, cert_name, cert_link, cert_image):
         self.cert_name = cert_name
         self.cert_id = cert_id
         self.cert_link = cert_link
+        self.cert_image = cert_image
 
 class Emp_cert(db.Model):
     __tablename__ = 'emp_cert'

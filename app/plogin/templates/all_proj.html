@@ -8,12 +8,16 @@
     <b> <h4 style="background-color:skyblue;margin-top: -10%;padding:0.5%;font-family: 'Times New Roman', Times, serif; text-align: center;">OTHER PROJECTS</h4></b>
 
         <p>{% for i in project %}
-            <br><br><br><br> <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;"><a href = "{{url_for('pdash.pdetails', pid = i.proj_id)}}">            {{i.proj_name}}</a></h2>
+            <br><br><br><br> <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;"><a href = "{{url_for('pdash.pdetails', pid = i.proj_id)}}">            {{i.proj_name}}</a><br>
+                                     <img src="../static/img/{{i.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+</h2>
             {% for j in proj_skill %}
                 {% if i.proj_id == j.proj_id %}
                     {% for k in skill %}
                         {% if j.skill_id == k.skill_id %}
-                            <br>{{k.skill_name}}
+                            <br>{{k.skill_name}}<br>
+                                         <img src="../static/img/{{k.skill_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+
                         {% endif %}
                     {% endfor %}
                 {% endif %}
