@@ -23,7 +23,7 @@
     <img src="https://media-exp1.licdn.com/dms/image/C510BAQEdUdCiIiDiTQ/company-logo_200_200/0?e=2159024400&v=beta&t=ASmV3FDXKuTfeeBwuIV8wK2hhT2Uko-x1dR5OUs-ZtM" style="width: 9.5%; height: 8%;"></img>
     <div style="margin-left:10%; height: 20%;">
      <h4 style="background-color:teal;margin-top: -10%;padding:0.5%;font-family: 'Times New Roman', Times, serif;color:white;">EMPLOYEE DASHBOARD</h4>
-                            <img src="../static/img/{{employee.emp_image}}" alt="emp-img" height="200" width="190" class="img-rounded">
+                            <img src="/static/{{employee.emp_image}}" alt="emp-img" height="200" width="190" class="img-rounded">
      ID : {{employee.emp_id}}<br>
     <div style="margin-top:2%;">Name : {{employee.emp_name}}<br></div>
      <div style="margin-left: 50%;margin-top: -4%;">Role : {{employee.emp_role}}<br></div>
@@ -34,7 +34,7 @@
             {% endif %}
         {% endfor %}
      <h4 style="margin-left:20.5%; color:skyblue"><a href="{{ url_for('pdash.pdetails',pid = projt.proj_id)}}">Assigned Project : {{projt.proj_name}}<br>
-                                 <img src="../static/img/{{projt.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+                                 <img src="/static/{{projt.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
     </div>
     <div style="margin-left:0%;width:100%;background-color: teal;">
     <h4 class="head"style="color:white;padding:0.5%;font-family: 'Times New Roman', Times, serif;"> SKILL SET </h4>
@@ -45,7 +45,7 @@
      <table id="skill" ; style="width: 100%">
         <th>
                 <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;"><a href = "{{url_for('pdash.sdetails', sid = j.skill_id)}}">{{j.skill_name}}</h2>
-                    <img src="../static/img/{{j.skill_image}}" alt="new-img" height="200" width="190" class="img-rounded">
+                    <img src="/static/{{j.skill_image}}" alt="new-img" height="200" width="190" class="img-rounded">
 
         </th>
             {% endif %}
@@ -151,7 +151,7 @@
     {% endfor %}
       <h4 style="font: italic;font-size:large;background-color: teal;padding:0.5%;font-family: 'Times New Roman', Times, serif;color:white"> CERTIFICATION </h4>
     {% for i in ecert %}
-     <h4><a href={{i.cert_link}}>{{i.cert_name}}</a><br><img src="../static/img/{{i.cert_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+     <h4><a href={{i.cert_link}}>{{i.cert_name}}</a><br><img src="/static/{{i.cert_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
 </h4>
     {% endfor %}
     <br>

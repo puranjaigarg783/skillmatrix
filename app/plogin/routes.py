@@ -79,5 +79,5 @@ def sdetails(sid):
     graph_emp_skill = Emp_skill.query.filter_by(skill_id = sid).all()
     lr = [graph_emp_skill[i].getEmpId() for i in range(0,len(graph_emp_skill))]
     graph_employee = Employee.query.filter(Employee.emp_id.in_(lr)).all()
-    return render_template('skill_dash.html', skill= skill,proj_skill=proj_skill,emp_skill=emp_skill,emp_avgskill=emp_avgskill,proj_prsent_avgskill=proj_prsent_avgskill,proj_rated_avgskill=proj_rated_avgskill, project = project, new_proj_skill = new_proj_skill, graph_emp_skill = graph_emp_skill, graph_employee = graph_employee)
+    return render_template('askill_dash.html', skill= skill,proj_skill=proj_skill,emp_skill=emp_skill,emp_avgskill=emp_avgskill,proj_prsent_avgskill=proj_prsent_avgskill,proj_rated_avgskill=proj_rated_avgskill, project = project, new_proj_skill = new_proj_skill, graph_emp_skill = graph_emp_skill, graph_employee = graph_employee)
 

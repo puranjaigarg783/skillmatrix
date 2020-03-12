@@ -67,7 +67,7 @@
 
     {% for i in skill %}
         <br><br><br>{{i.skill_name}}<br>
-                                     <img src="../static/img/{{i.skill_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+                                     <img src="/static/{{i.skill_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
 
         {% for j in proj_skill %}
             {% if i.skill_id == j.skill_id %}

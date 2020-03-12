@@ -95,7 +95,7 @@ button:hover {
             {% for j in employee %}
                 {% if i.emp_id == j.emp_id %}
         <p style="font-size: xx-large; margin-left:5%;"><b><a href="{{ url_for('pdash.edetails',eid = i.emp_id)}}">{{j.emp_name}}</a> <br>
-                                             <img src="../static/img/{{j.emp_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+                                             <img src="/static/{{j.emp_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
 
         </br></p>
                 {% endif %}

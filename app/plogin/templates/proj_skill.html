@@ -35,7 +35,7 @@
         </td>
         <td>
         <h1 style="font-size: medium">Project Name:{{project.proj_name}}</h1>
-            <img src="../static/img/{{project.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+            <img src="/static{{project.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
 
     </td>
         </table>
@@ -53,7 +53,7 @@
          <table id="skill" ; style="width: 80%; border: none;">
 
         <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;"><a href = "{{url_for('pdash.sdetails', sid = j.skill_id)}}">{{j.skill_name}}</a><br>
-                                         <img src="../static/img/{{j.skill_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+                                         <img src="/static/{{j.skill_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
 </h2>
                 {% endif %}
             {% endfor %}
@@ -96,7 +96,7 @@
             </div>
         {% for i in empl %}
             <p><a href="{{ url_for('pdash.edetails',eid = i.emp_id)}}">{{i.emp_name}}</a><br>
-                                             <img src="../static/img/{{i.emp_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+                                             <img src="/static/{{i.emp_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
 </p>
         {% endfor %}
          <br><br>
