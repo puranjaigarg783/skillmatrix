@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Employee Dashboard</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
         <style>
@@ -24,6 +35,8 @@
     <div style="margin-left:10%; height: 20%;">
      <h4 style="background-color:teal;margin-top: -10%;padding:0.5%;font-family: 'Times New Roman', Times, serif;color:white;">EMPLOYEE DASHBOARD</h4>
                             <img src="/static/{{employee.emp_image}}" alt="emp-img" height="200" width="190" class="img-rounded">
+
+
      ID : {{employee.emp_id}}<br>
     <div style="margin-top:2%;">Name : {{employee.emp_name}}<br></div>
      <div style="margin-left: 50%;margin-top: -4%;">Role : {{employee.emp_role}}<br></div>
@@ -33,8 +46,8 @@
                 <br>Location : {{i.loc_name}}
             {% endif %}
         {% endfor %}
-     <h4 style="margin-left:20.5%; color:skyblue"><a href="{{ url_for('pdash.pdetails',pid = projt.proj_id)}}">Assigned Project : {{projt.proj_name}}<br>
-                                 <img src="/static/{{projt.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+     <h4 style="margin-left:20.5%; color:skyblue">Assigned Project : {{projt.proj_name}}<br>
+                                 <img src="/static/{{projt.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></h4>
     </div>
     <div style="margin-left:0%;width:100%;background-color: teal;">
     <h4 class="head"style="color:white;padding:0.5%;font-family: 'Times New Roman', Times, serif;"> SKILL SET </h4>
@@ -44,8 +57,8 @@
             {% if i.skill_id == j.skill_id %}
      <table id="skill" ; style="width: 100%">
         <th>
-                <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;"><a href = "{{url_for('pdash.sdetails', sid = j.skill_id)}}">{{j.skill_name}}</h2>
-                    <img src="/static/{{j.skill_image}}" alt="new-img" height="200" width="190" class="img-rounded">
+                <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;">{{j.skill_name}}</h2>
+                    <img src="/static/{{j.skill_image}}" alt="hi-img" height="200" width="190" class="img-rounded">
 
         </th>
             {% endif %}
@@ -62,7 +75,7 @@
 <div class="w3-container">
 <div class="w3-light-grey">
   <div class="w3-container w3-teal w3-center" style="color: teal; width:{{i.proj_lead_rating}}%">{{i.proj_lead_rating}}%</div>
-  <a href = "{{url_for('edit.lrating', eid = i.emp_id , sid = i.skill_id )}}">Edit</a><br>
+<!--  <a href = "{{url_for('edit.lrating', eid = i.emp_id , sid = i.skill_id )}}">Edit</a><br>-->
 </div><br>
 </div><br></div>
      <div >
@@ -70,7 +83,6 @@
    <div >
    <div class="w3-light-grey">
   <div class="w3-container w3-green w3-center" style="width:{{i.self_eval_rating}}%">{{i.self_eval_rating}}%</div>
-  <a href = "{{url_for('edit.srating', eeid = i.emp_id , ssid = i.skill_id )}}">Edit</a><br></div>
 </div><br>
 </div><br></div>
 </td>
@@ -155,6 +167,5 @@
 </h4>
     {% endfor %}
     <br>
-    <p><a href="{{ url_for('pdash.allproj')}}">Explore All Projects</a> </p>
 </body>
 </html>

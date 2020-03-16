@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <form method="post">
+        <br>{{skill_search_form.skill_select.label}}
+        <br>{{skill_search_form.skill_select}}
+        <br><input type = "submit">
+    </form>
+<!--    new_proj_skill-->
+<!--    graph_emp_skill-->
+    {% if graph_emp_skill %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Project Name', 'Present Skill Rating', 'Rated Skill Rating'],
+        {% for i in project %}
+            {% for j in new_proj_skill %}
+                {% if i.proj_id == j.proj_id %}
+                     ['{{i.proj_name}}', {{j.proj_prsent_skill_rating}}, {{j.proj_rated_rating}}],
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        ]);
+
+        var options = {
+          chart: {
+            title: 'project wise distribution of skills',
+            subtitle: '',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+      </script>
+    <script>
+ google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart1);
+
+      function drawChart1() {
+        var data = google.visualization.arrayToDataTable([
+        ['Employee Name', 'Final Rating'],
+        {% for i in graph_employee %}
+            {% for j in graph_emp_skill %}
+                {% if i.emp_id == j.emp_id %}
+                     ['{{i.emp_name}}', {{j.final_rating}}],
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        ]);
+
+        var options = {
+          chart: {
+            title: 'employee wise distribution of skills',
+            subtitle: '',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material1'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+{% endif %}
+</head>
+<body>
+
+{% if new_proj_skill %}
+
+    {% for i in skill %}
+        <br><br><br>{{i.skill_name}}<br>
+                                     <img src="/static/{{i.skill_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+
+        {% for j in proj_skill %}
+            {% if i.skill_id == j.skill_id %}
+                <br>Total Projects employing this skill:{{j.ptotal}}
+            {% endif %}
+        {% endfor %}
+        {% for j in emp_skill %}
+            {% if i.skill_id == j.skill_id %}
+                <br>Total Employees employing this skill:{{j.etotal}}
+            {% endif %}
+        {% endfor %}
+        {% for j in emp_avgskill %}
+            {% if i.skill_id == j.skill_id %}
+                <br>Average Employee skill rating:{{j.askill}}
+            {% endif %}
+        {% endfor %}
+        {% for j in proj_prsent_avgskill %}
+            {% if i.skill_id == j.skill_id %}
+                <br>Average Project Present Skill Rating:{{j.proj_prsent_avgskill}}
+            {% endif %}
+        {% endfor %}
+        {% for j in proj_rated_avgskill %}
+            {% if i.skill_id == j.skill_id %}
+                <br>Average Project Rated Skill Rating:{{j.proj_rated_avgskill}}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+     <table class="columns">
+            <tr>
+<td>
+ <div id="columnchart_material" style="width: 800px; height: 500px ;"></div>
+</td>
+<td>
+
+<div id="columnchart_material1" style="width: 800px; height: 500px;"></div>
+</td>
+            </tr>
+     </table>
+</body>
+</html>

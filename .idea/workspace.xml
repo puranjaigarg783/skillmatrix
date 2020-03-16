@@ -3,24 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6cb74a1b-512e-43ad-bf03-e717b8254479" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/templates/absnewlogin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/templates/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/templates/newlogin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/filter/static/img/boat-1296201.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/filter/templates/efilter.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/filter/templates/newefilter.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/filter/templates/newefilter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/filter/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/filter/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plogin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/plogin/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/static/customchart.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/static/img/boat-1296201.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/plogin/templates/all_proj.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/all_proj.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/ashok_skill_dash.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/boat-1296201.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/emp_skill.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/new2_emp.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/new3_emp.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/new3_emp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/new_emp_skill.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plogin/templates/askill_dash.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plogin/templates/new3_emp.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/emp_skills.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/plogin/templates/proj_skill.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/proj_skill.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/skill_dash.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/skill_dash.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +47,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\PuranjaiGarg\Desktop\skillmatrix\app\plogin\templates" />
+      <recent name="C:\Users\PuranjaiGarg\Desktop\skillmatrix\app\filter\templates" />
       <recent name="C:\Users\PuranjaiGarg\Desktop\skillmatrix\app\static" />
       <recent name="C:\Users\PuranjaiGarg\Desktop\skillmatrix\app\filter\static\img" />
       <recent name="C:\Users\PuranjaiGarg\Desktop\skillmatrix\app\plogin\static\img" />
@@ -103,10 +94,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583919686488" />
-    <state x="700" y="330" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582991132825">
+    <state x="700" y="330" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584094968869">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="700" y="330" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1582991132825" />
+    <state x="700" y="330" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1584094968869" />
     <state x="1220" y="278" key="FileChooserDialogImpl" timestamp="1583919629647">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -119,10 +110,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1583839290195" />
-    <state x="1148" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1584006508840">
+    <state x="1148" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1584339338655">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1148" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584006508840" />
+    <state x="1148" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584339338655" />
     <state x="1251" y="442" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583149158849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -135,13 +126,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1029" y="105" width="774" height="840" key="dock-window-2/0.0.1920.1040@0.0.1920.1040" timestamp="1582937996945" />
-    <state x="667" y="154" width="710" height="732" key="find.popup" timestamp="1583622213118">
+    <state x="667" y="154" width="710" height="732" key="find.popup" timestamp="1584037035743">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="154" width="710" height="732" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583622213118" />
-    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1583736725859">
+    <state x="667" y="154" width="710" height="732" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584037035743" />
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1584393284261">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583736725859" />
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584393284261" />
   </component>
 </project>

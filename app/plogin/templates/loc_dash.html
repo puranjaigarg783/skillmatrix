@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Skill Name', 'No of Employees'],
+        {% for i in emp_skill %}
+            {% for j in skill %}
+                {% if i.skill_id == j.skill_id %}
+                     ['{{j.skill_name}}',{{i.no_emp}}],
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        ]);
+
+        var options = {
+          chart: {
+            title: 'skill wise distribution of employees',
+            subtitle: '',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+      </script>
+</head>
+<body>
+
+     <table class="columns">
+            <tr>
+<td>
+ <div id="columnchart_material" style="width: 800px; height: 500px ;"></div>
+</td>
+<td>
+
+<div id="columnchart_material1" style="width: 800px; height: 500px;"></div>
+</td>
+            </tr>
+     </table>
+</body>
+</html>

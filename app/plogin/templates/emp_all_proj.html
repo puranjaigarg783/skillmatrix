@@ -8,7 +8,7 @@
     <b> <h4 style="background-color:skyblue;margin-top: -10%;padding:0.5%;font-family: 'Times New Roman', Times, serif; text-align: center;">OTHER PROJECTS</h4></b>
 
         <p>{% for i in project %}
-            <br><br><br><br> <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;"><a href = "{{url_for('pdash.pdetails', pid = i.proj_id)}}">            {{i.proj_name}}</a><br>
+            <br><br><br><br> <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;">{{i.proj_name}}<br>
                                      <img src="/static/{{i.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
 </h2>
             {% for j in proj_skill %}

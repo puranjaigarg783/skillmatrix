@@ -52,7 +52,7 @@
                 {% if i.skill_id == j.skill_id %}
          <table id="skill" ; style="width: 80%; border: none;">
 
-        <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;"><a href = "{{url_for('pdash.sdetails', sid = j.skill_id)}}">{{j.skill_name}}</a><br>
+        <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;">{{j.skill_name}}<br>
                                          <img src="/static/{{j.skill_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
 </h2>
                 {% endif %}
@@ -95,12 +95,11 @@
             <h4 class="head" style="color:white;font-family: 'Times New Roman', Times, serif;font-size: x-large;background-color: teal;padding: 0.5%;"> PROJECT TEAM  </h4>
             </div>
         {% for i in empl %}
-            <p><a href="{{ url_for('pdash.edetails',eid = i.emp_id)}}">{{i.emp_name}}</a><br>
+            <p>{{i.emp_name}}<br>
                                              <img src="/static/{{i.emp_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
 </p>
         {% endfor %}
          <br><br>
-         <p><a href="{{ url_for('filtr.efilter')}}">Search Employees by Skill</a> </p>
 
 
 

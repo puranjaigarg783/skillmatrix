@@ -10,6 +10,19 @@ from app.filter.forms import Emp_filter_form
 import json
 from flask import jsonify
 
+
+@filtr.route('/pm/efilter', methods  = ['GET','POST'])
+def pm_efilter():
+    emp_skill = None
+    employee = None
+    emp_filter_form = Emp_filter_form()
+    emp_filter_form.skill.choices = [(skill.skill_id,skill.skill_name) for skill in Skill.query.all()]
+    if request.method == 'POST':
+        emp_skill = Emp_skill.query.filter_by(skill_id = emp_filter_form.skill.data).filter_by(experience = emp_filter_form.exp.data).filter_by(skill_range = emp_filter_form.range.data).order_by(Emp_skill.final_rating.desc()).all()
+        employee = Employee.query.all()
+    return render_template('pm_efilter.html', emp_filter_form = emp_filter_form, emp_skill = emp_skill, employee = employee)
+
+
 @filtr.route('/efilter', methods  = ['GET','POST'])
 def efilter():
     emp_skill = None

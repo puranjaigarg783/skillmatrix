@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Employee Dashboard</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+        <style>
+#skill {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+#skill td{
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#skill tr:nth-child(even){background-color: #f2f2f2;}
+#skill tr:hover {background-color: #ddd;}
+</style>
+    <img src="https://media-exp1.licdn.com/dms/image/C510BAQEdUdCiIiDiTQ/company-logo_200_200/0?e=2159024400&v=beta&t=ASmV3FDXKuTfeeBwuIV8wK2hhT2Uko-x1dR5OUs-ZtM" style="width: 9.5%; height: 8%;"></img>
+    <div style="margin-left:10%; height: 20%;">
+     <h4 style="background-color:teal;margin-top: -10%;padding:0.5%;font-family: 'Times New Roman', Times, serif;color:white;">EMPLOYEE DASHBOARD</h4>
+                            <img src="/static/{{employee.emp_image}}" alt="emp-img" height="200" width="190" class="img-rounded">
+
+            <div class = "container">
+        <button class = "btn btn-success" data-target = "#mymodal"
+         data-toggle="modal"> Open Signup</button>
+        <div class = "modal" id = "mymodal">
+            <div class="modal-dialog">
+                <div class = "modal-content">
+                    <div class = "modal-header">
+                        <h3 class = "text=center text-primary"> SignUp </h3>
+                        <button type = "button" class = "close" data-dismiss = "modal"> &times; </button>
+                        <div class = "modal=body">
+                            <form method="post">
+                                    {{ sr_edit_form.csrf_token }}
+                                <br>{{sr_edit_form.skill_select.label}}
+                                <br>{{sr_edit_form.skill_select}}
+                                <br>{{sr_edit_form.self_rating.label}}
+                                <br>{{sr_edit_form.self_rating}}
+                                <br><input type = "submit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     ID : {{employee.emp_id}}<br>
+    <div style="margin-top:2%;">Name : {{employee.emp_name}}<br></div>
+     <div style="margin-left: 50%;margin-top: -4%;">Role : {{employee.emp_role}}<br></div>
+     <div style="margin-left: 50%; margin-top: 2%;">Experience : {{employee.experience}}<br></div>
+        {% for i in location %}
+            {% if i.loc_id == employee.loc_id %}
+                <br>Location : {{i.loc_name}}
+            {% endif %}
+        {% endfor %}
+     <h4 style="margin-left:20.5%; color:skyblue"><a href="{{ url_for('pdash.emp_pdetails',pid = projt.proj_id)}}">Assigned Project : {{projt.proj_name}}<br>
+                                 <img src="/static/{{projt.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+    </div>
+    <div style="margin-left:0%;width:100%;background-color: teal;">
+    <h4 class="head"style="color:white;padding:0.5%;font-family: 'Times New Roman', Times, serif;"> SKILL SET </h4>
+    </div>
+    {% for i in emp_skill %}
+        {% for j in eskill %}
+            {% if i.skill_id == j.skill_id %}
+     <table id="skill" ; style="width: 100%">
+        <th>
+                <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;">{{j.skill_name}}</h2>
+                    <img src="/static/{{j.skill_image}}" alt="hi-img" height="200" width="190" class="img-rounded">
+
+        </th>
+            {% endif %}
+        {% endfor %}
+        <tr>
+            <td style="padding: 2%">
+   <div> Skill Level:{{i.skill_range}} <br><br></div>
+</td>
+<td style="padding: 2%">
+   <divs>Experience :{{i.experience}} <br><br></div>
+</td>
+<td style="padding: 2%">
+   <div >
+<div class="w3-container">
+<div class="w3-light-grey">
+  <div class="w3-container w3-teal w3-center" style="color: teal; width:{{i.proj_lead_rating}}%">{{i.proj_lead_rating}}%</div>
+<!--  <a href = "{{url_for('edit.lrating', eid = i.emp_id , sid = i.skill_id )}}">Edit</a><br>-->
+</div><br>
+</div><br></div>
+     <div >
+<div class="w3-container">
+   <div >
+   <div class="w3-light-grey">
+  <div class="w3-container w3-green w3-center" style="width:{{i.self_eval_rating}}%">{{i.self_eval_rating}}%</div>
+</div><br>
+</div><br></div>
+</td>
+<td style="padding:2%">
+    <div>Final Rating :{{i.final_rating}}<br></div>
+<style>
+    .circle-wrap {
+  margin: 50px auto;
+  width: 150px;
+  height: 150px;
+  background: #e6e2e7;
+  border-radius: 50%;
+}
+.circle-wrap .circle .mask,
+.circle-wrap .circle .fill {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  border-radius: 50%;
+}
+.circle-wrap .circle .mask {
+  clip: rect(0px, 150px, 150px, 75px);
+}
+.circle-wrap .circle .mask .fill {
+  clip: rect(0px, 75px, 150px, 0px);
+  background-color: #9e00b1;
+}
+.circle-wrap .circle .mask.full,
+.circle-wrap .circle .fill {
+  animation: fill ease-in-out 3s;
+  transform: rotate([[{{i.final_rating}}/100]*360]/2deg);
+}
+
+@keyframes fill {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate([[{{i.final_rating}}/100]*360]/2deg);
+  }
+}
+.circle-wrap .inside-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: #fff;
+  line-height: 130px;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  position: absolute;
+  z-index: 100;
+  font-weight: 700;
+  font-size: 2em;
+}
+  </style>
+<div class="circle-wrap">
+  <div class="circle">
+
+    <div class="mask full">
+      <div class="fill"></div>
+    </div>
+
+    <div class="mask half">
+      <div class="fill"></div>
+    </div>
+
+    <div class="inside-circle">
+      {{i.final_rating}}%
+    </div>
+
+  </div>
+</td>
+
+
+
+</table>
+    {% endfor %}
+      <h4 style="font: italic;font-size:large;background-color: teal;padding:0.5%;font-family: 'Times New Roman', Times, serif;color:white"> CERTIFICATION </h4>
+    {% for i in ecert %}
+     <h4><a href={{i.cert_link}}>{{i.cert_name}}</a><br><img src="/static/{{i.cert_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+</h4>
+    {% endfor %}
+    <br>
+    <p><a href="{{ url_for('pdash.emp_allproj')}}">Explore All Projects</a> </p>
+</body>
+</html>

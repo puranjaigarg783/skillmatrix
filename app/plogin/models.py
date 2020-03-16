@@ -5,11 +5,14 @@ class Location(db.Model):
 
     loc_id = db.Column(db.Integer, primary_key=True)
     loc_name = db.Column(db.String(80), nullable=False)
+    loc_image = db.Column(db.String(100), unique=True)
 
 
-    def __init__(self, loc_id, loc_name):
+
+    def __init__(self, loc_id, loc_name, loc_image):
         self.loc_name = loc_name
         self.loc_id = loc_id
+        self.loc_image = loc_image
     #
 
 
