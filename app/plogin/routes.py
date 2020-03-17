@@ -12,6 +12,7 @@ from app.plogin.models import Location
 from app.plogin.forms import Lr_edit_form
 from app.plogin.forms import Sr_edit_form
 from app.plogin.forms import Skill_search_form
+from app.plogin.forms import Loc_search_form
 from sqlalchemy import func
 from sqlalchemy.sql import label
 
@@ -182,10 +183,10 @@ def edetails(eid):
         print(new_emp_skill.proj_lead_rating)
         db.session.add(new_emp_skill)
         db.session.commit()
-    for i in emp_skill:
-        i.final_rating = i.proj_lead_rating + i.self_eval_rating + i.experience
-        db.session.add(i)
-        db.session.commit()
+        for i in emp_skill:
+            i.final_rating = i.proj_lead_rating + i.self_eval_rating + i.experience
+            db.session.add(i)
+            db.session.commit()
     ls = [emp_skill[i].geteSkillId() for i in range(0,len(emp_skill))]
     eskill = Skill.query.filter(Skill.skill_id.in_(ls)).all()
     pr = employee.geteProjID()
@@ -266,8 +267,24 @@ def sdetails(sid):
     graph_employee = Employee.query.filter(Employee.emp_id.in_(lr)).all()
     return render_template('skill_dash.html', skill= skill,proj_skill=proj_skill,emp_skill=emp_skill,emp_avgskill=emp_avgskill,proj_prsent_avgskill=proj_prsent_avgskill,proj_rated_avgskill=proj_rated_avgskill, project = project, new_proj_skill = new_proj_skill, graph_emp_skill = graph_emp_skill, graph_employee = graph_employee)
 
-@pdash.route('/location/<lid>')
+
+@pdash.route('/auth/location', methods=['GET', 'POST'])
+def auth_ldetails():
+    emp_skill = None
+    skill = Skill.query.all()
+    loc_search_form = Loc_search_form()
+    loc_search_form.loc_select.choices = [(location.loc_id,location.loc_name) for location in Location.query.all()]
+    if request.method == 'POST':
+        location = Location.query.filter_by(loc_id=loc_search_form.loc_select.data).first()
+        employee = Employee.query.filter_by(loc_id=loc_search_form.loc_select.data).all()
+        ls = [employee[i].geteID() for i in range(0, len(employee))]
+        emp_skill = db.session.query(Emp_skill.skill_id, label('no_emp', func.count(Emp_skill.emp_id))).filter(Emp_skill.emp_id.in_(ls)).group_by(Emp_skill.skill_id).all()
+    return render_template('auth_loc_dash.html', emp_skill=emp_skill, skill=skill, loc_search_form = loc_search_form)
+
+
+@pdash.route('/location/<lid>', methods = ['GET','POST'])
 def ldetails(lid):
+
     skill = Skill.query.all()
     location = Location.query.filter_by(loc_id = lid).first()
     employee = Employee.query.filter_by(loc_id = lid).all()

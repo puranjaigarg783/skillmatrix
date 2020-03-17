@@ -15,3 +15,6 @@ class Sr_edit_form(FlaskForm):
 
 class Skill_search_form(FlaskForm):
     skill_select = SelectField('Select skill', choices = [])
+
+class Loc_search_form(FlaskForm):
+    loc_select = SelectField('Location Select', choices = [])

@@ -3,14 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6cb74a1b-512e-43ad-bf03-e717b8254479" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/filter/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/filter/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plogin/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/plogin/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/all_proj.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/all_proj.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/askill_dash.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/new3_emp.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/emp_skills.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/plogin/templates/proj_skill.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/proj_skill.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plogin/templates/auth_db.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/plogin/templates/auth_db.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/plogin/templates/test.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
