@@ -38,20 +38,20 @@
 
             <div class = "container">
         <button class = "btn btn-success" data-target = "#mymodal"
-         data-toggle="modal"> Edit Self Rating</button>
+         data-toggle="modal"> Edit Rating for this Employee</button>
         <div class = "modal" id = "mymodal">
             <div class="modal-dialog">
                 <div class = "modal-content">
                     <div class = "modal-header">
-                        <h3 class = "text=center text-primary"> Edit Self Rating </h3>
+                        <h3 class = "text=center text-primary"> Edit Rating for this employee </h3>
                         <button type = "button" class = "close" data-dismiss = "modal"> &times; </button>
                         <div class = "modal=body">
                             <form method="post">
-                                    {{ sr_edit_form.csrf_token }}
-                                <br>{{sr_edit_form.skill_select.label}}
-                                <br>{{sr_edit_form.skill_select}}
-                                <br>{{sr_edit_form.self_rating.label}}
-                                <br>{{sr_edit_form.self_rating}}
+                                    {{ lr_edit_form.csrf_token }}
+                                <br>{{lr_edit_form.skill_select.label}}
+                                <br>{{lr_edit_form.skill_select}}
+                                <br>{{lr_edit_form.lead_rating.label}}
+                                <br>{{lr_edit_form.lead_rating}}
                                 <br><input type = "submit">
                             </form>
                         </div>
@@ -60,19 +60,24 @@
             </div>
         </div>
     </div>
-
-
-     ID : {{employee.emp_id}}<br>
-    <div style="margin-top:2%;">Name : {{employee.emp_name}}<br></div>
-     <div style="margin-left: 50%;margin-top: -4%;">Role : {{employee.emp_role}}<br></div>
-     <div style="margin-left: 50%; margin-top: 2%;">Experience : {{employee.experience}}<br></div>
+    <table style="width: 100%;padding: 2%">
+      <tr>
+       <td>   <h1 style="font-size: medium;">ID : {{employee.emp_id}} </h1></td>
+      <td> <h1 style="font-size: medium;">Name : {{employee.emp_name}}</h1></td>
+      </tr>
+      <tr>
+       <td> <h1 style="font-size: medium;">Role : {{employee.emp_role}}</h1></td>
+       <td> <h1 style="font-size: medium;"> Experience: {{employee.experience}} </h1></td>
+       <td>  <img src="/static/projbck.png" style="height: 50%;" > <p> HEY! lead <p></td>
+       </tr>
+      </table>
         {% for i in location %}
             {% if i.loc_id == employee.loc_id %}
                 <br>Location : {{i.loc_name}}
             {% endif %}
         {% endfor %}
-     <h4 style="margin-left:20.5%; color:skyblue"><a href="{{ url_for('pdash.emp_pdetails',pid = projt.proj_id)}}">Assigned Project : {{projt.proj_name}}<br>
-                                 <img src="/static/{{projt.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+     <h4 style="margin-left:20.5%; color:skyblue">Assigned Project : {{projt.proj_name}}<br>
+                                 <img src="/static/{{projt.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></h4>
     </div>
     <div style="margin-left:0%;width:100%;background-color: teal;">
     <h4 class="head"style="color:white;padding:0.5%;font-family: 'Times New Roman', Times, serif;"> SKILL SET </h4>
@@ -86,14 +91,20 @@
                     <img src="/static/{{j.skill_image}}" alt="hi-img" height="200" width="190" class="img-rounded">
 
         </th>
+        <tr>
+          <th>Skill Level: </th>
+          <th>Experience :</th>
+          <th>Lead rating VS Self rating:</th>
+          <th>Final Rating : </th>
+        </tr>
             {% endif %}
         {% endfor %}
         <tr>
             <td style="padding: 2%">
-   <div> Skill Level:{{i.skill_range}} <br><br></div>
+   <div>{{i.skill_range}} <br><br></div>
 </td>
 <td style="padding: 2%">
-   <divs>Experience :{{i.experience}} <br><br></div>
+   <divs>{{i.experience}} <br><br></div>
 </td>
 <td style="padding: 2%">
    <div >
@@ -111,8 +122,8 @@
 </div><br>
 </div><br></div>
 </td>
-<td style="padding:2%">
-    <div>Final Rating :{{i.final_rating}}<br></div>
+<td style="padding:2%"> 
+    
 <style>
     .circle-wrap {
   margin: 50px auto;
@@ -192,6 +203,5 @@
 </h4>
     {% endfor %}
     <br>
-    <p><a href="{{ url_for('pdash.emp_allproj')}}">Explore All Projects</a> </p>
 </body>
 </html>

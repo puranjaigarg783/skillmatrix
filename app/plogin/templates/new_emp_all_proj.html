@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<title>Other Projects (emp)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <img src="https://media-exp1.licdn.com/dms/image/C510BAQEdUdCiIiDiTQ/company-logo_200_200/0?e=2159024400&v=beta&t=ASmV3FDXKuTfeeBwuIV8wK2hhT2Uko-x1dR5OUs-ZtM" style="width: 9.5%; height: 8%;"></img>
+    <div style="margin-left:10%; height: 20%;">
+    <b> <h4 style="background-color:royalblue;margin-top: -10%;padding:1.5%;font-family: 'Times New Roman', Times, serif; text-align: center;color: white;">OTHER PROJECTS</h4></b>
+    <body>
+
+        <div class="container " style="width:50%">
+
+
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="width: 70%">{% for i in project %}
+  {{i.proj_name}}</button>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+<h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;" class="modal-title">{{i.proj_name}}<br>
+                                     <img src="/static/{{i.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a>
+</h2>
+
+        </div>
+        <div class="modal-body">
+         
+
+        <p>
+            <br>
+            {% for j in proj_skill %}
+                {% if i.proj_id == j.proj_id %}
+                    {% for k in skill %}
+                        {% if j.skill_id == k.skill_id %}
+                            <br>{{k.skill_name}}<br>
+                                         <img src="/static/{{k.skill_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </p>
+    </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+</body>
+</html>

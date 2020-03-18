@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Employee Dashboard(auth)</title>
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -33,48 +35,30 @@
 </style>
     <img src="https://media-exp1.licdn.com/dms/image/C510BAQEdUdCiIiDiTQ/company-logo_200_200/0?e=2159024400&v=beta&t=ASmV3FDXKuTfeeBwuIV8wK2hhT2Uko-x1dR5OUs-ZtM" style="width: 9.5%; height: 8%;"></img>
     <div style="margin-left:10%; height: 20%;">
-     <h4 style="background-color:teal;margin-top: -10%;padding:0.5%;font-family: 'Times New Roman', Times, serif;color:white;">EMPLOYEE DASHBOARD</h4>
+     <h4 style="background-color:maroon;margin-top: -10%;padding:0.5%;font-family: 'Times New Roman', Times, serif;color:white;">EMPLOYEE DASHBOARD</h4>
                             <img src="/static/{{employee.emp_image}}" alt="emp-img" height="200" width="190" class="img-rounded">
 
-            <div class = "container">
-        <button class = "btn btn-success" data-target = "#mymodal"
-         data-toggle="modal"> Edit Self Rating</button>
-        <div class = "modal" id = "mymodal">
-            <div class="modal-dialog">
-                <div class = "modal-content">
-                    <div class = "modal-header">
-                        <h3 class = "text=center text-primary"> Edit Self Rating </h3>
-                        <button type = "button" class = "close" data-dismiss = "modal"> &times; </button>
-                        <div class = "modal=body">
-                            <form method="post">
-                                    {{ sr_edit_form.csrf_token }}
-                                <br>{{sr_edit_form.skill_select.label}}
-                                <br>{{sr_edit_form.skill_select}}
-                                <br>{{sr_edit_form.self_rating.label}}
-                                <br>{{sr_edit_form.self_rating}}
-                                <br><input type = "submit">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<table style="width: 100%;padding: 2%">
+    <tr>
+     <td>   <h1 style="font-size: medium;">ID : {{employee.emp_id}} </h1></td>
+    <td> <h1 style="font-size: medium;">Name : {{employee.emp_name}}</h1></td>
+    </tr>
+    <tr>
+     <td> <h1 style="font-size: medium;">Role : {{employee.emp_role}}</h1></td>
+     <td> <h1 style="font-size: medium;"> Experience: {{employee.experience}} </h1></td>
+     <td>  <img src="/static/adminbck.jpg" style="height: 50%;margin-top: -5%" ><br>  Hey!</td>
+     </tr>
+    </table>
 
-
-     ID : {{employee.emp_id}}<br>
-    <div style="margin-top:2%;">Name : {{employee.emp_name}}<br></div>
-     <div style="margin-left: 50%;margin-top: -4%;">Role : {{employee.emp_role}}<br></div>
-     <div style="margin-left: 50%; margin-top: 2%;">Experience : {{employee.experience}}<br></div>
         {% for i in location %}
             {% if i.loc_id == employee.loc_id %}
-                <br>Location : {{i.loc_name}}
+                <br><h2>Location : {{i.loc_name}}</h2>
             {% endif %}
         {% endfor %}
-     <h4 style="margin-left:20.5%; color:skyblue"><a href="{{ url_for('pdash.emp_pdetails',pid = projt.proj_id)}}">Assigned Project : {{projt.proj_name}}<br>
+     <h4 style="margin-left:20.5%; color:skyblue"><a href="{{ url_for('pdash.pdetails',pid = projt.proj_id)}}">Assigned Project : {{projt.proj_name}}<br>
                                  <img src="/static/{{projt.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
     </div>
-    <div style="margin-left:0%;width:100%;background-color: teal;">
+    <div style="margin-left:0%;width:100%;background-color: maroon;">
     <h4 class="head"style="color:white;padding:0.5%;font-family: 'Times New Roman', Times, serif;"> SKILL SET </h4>
     </div>
     {% for i in emp_skill %}
@@ -82,24 +66,30 @@
             {% if i.skill_id == j.skill_id %}
      <table id="skill" ; style="width: 100%">
         <th>
-                <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;">{{j.skill_name}}</h2>
+                <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;"><a href = "{{url_for('pdash.sdetails', sid = j.skill_id)}}">{{j.skill_name}}</h2>
                     <img src="/static/{{j.skill_image}}" alt="hi-img" height="200" width="190" class="img-rounded">
 
         </th>
             {% endif %}
         {% endfor %}
         <tr>
+          <th>Skill Level:</th>
+          <th>Experience :</th>
+          <th>Lead rating Vs Self rating :</th>
+          <th>Final Rating :</th>
+        </tr>
+        <tr>
             <td style="padding: 2%">
-   <div> Skill Level:{{i.skill_range}} <br><br></div>
+   <div> {{i.skill_range}} <br><br></div>
 </td>
 <td style="padding: 2%">
-   <divs>Experience :{{i.experience}} <br><br></div>
+   <divs>{{i.experience}} <br><br></div>
 </td>
 <td style="padding: 2%">
    <div >
 <div class="w3-container">
 <div class="w3-light-grey">
-  <div class="w3-container w3-teal w3-center" style="color: teal; width:{{i.proj_lead_rating}}%">{{i.proj_lead_rating}}%</div>
+  <div class="w3-container w3-red w3-center" style="color: white; width:{{i.proj_lead_rating}}%">{{i.proj_lead_rating}}%</div>
 <!--  <a href = "{{url_for('edit.lrating', eid = i.emp_id , sid = i.skill_id )}}">Edit</a><br>-->
 </div><br>
 </div><br></div>
@@ -107,12 +97,12 @@
 <div class="w3-container">
    <div >
    <div class="w3-light-grey">
-  <div class="w3-container w3-green w3-center" style="width:{{i.self_eval_rating}}%">{{i.self_eval_rating}}%</div>
+  <div class="w3-container w3-brown w3-center" style="width:{{i.self_eval_rating}}%">{{i.self_eval_rating}}%</div>
+ </div>
 </div><br>
 </div><br></div>
 </td>
 <td style="padding:2%">
-    <div>Final Rating :{{i.final_rating}}<br></div>
 <style>
     .circle-wrap {
   margin: 50px auto;
@@ -186,12 +176,15 @@
 
 </table>
     {% endfor %}
-      <h4 style="font: italic;font-size:large;background-color: teal;padding:0.5%;font-family: 'Times New Roman', Times, serif;color:white"> CERTIFICATION </h4>
+      <h2 style="font: italic;font-size:large;background-color: maroon;padding:0.5%;font-family: 'Times New Roman', Times, serif;color:white"> CERTIFICATION </h2>
+      <div style="margin-left: 2%;">
+        <br>
     {% for i in ecert %}
-     <h4><a href={{i.cert_link}}>{{i.cert_name}}</a><br><img src="/static/{{i.cert_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
-</h4>
+     <h2><a href={{i.cert_link}}>{{i.cert_name}}</a><br><img src="/static/{{i.cert_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h2>
+</h2>
     {% endfor %}
     <br>
-    <p><a href="{{ url_for('pdash.emp_allproj')}}">Explore All Projects</a> </p>
+      <p style="margin-left: 30%"><a href="{{ url_for('pdash.allproj')}}" class="w3-btn w3-brown w3-large"><i class="w3-margin-left fa fa-search"></i> Explore all Projects</a> </p>
+    </div>
 </body>
 </html>

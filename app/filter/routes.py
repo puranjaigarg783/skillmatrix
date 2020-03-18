@@ -20,7 +20,7 @@ def pm_efilter():
     if request.method == 'POST':
         emp_skill = Emp_skill.query.filter_by(skill_id = emp_filter_form.skill.data).filter_by(experience = emp_filter_form.exp.data).filter_by(skill_range = emp_filter_form.range.data).order_by(Emp_skill.final_rating.desc()).all()
         employee = Employee.query.all()
-    return render_template('pm_efilter.html', emp_filter_form = emp_filter_form, emp_skill = emp_skill, employee = employee)
+    return render_template('new_pm_efilter.html', emp_filter_form = emp_filter_form, emp_skill = emp_skill, employee = employee)
 
 
 @filtr.route('/efilter', methods  = ['GET','POST'])
@@ -32,7 +32,7 @@ def efilter():
     if request.method == 'POST':
         emp_skill = Emp_skill.query.filter_by(skill_id = emp_filter_form.skill.data).filter_by(experience = emp_filter_form.exp.data).filter_by(skill_range = emp_filter_form.range.data).order_by(Emp_skill.final_rating.desc()).all()
         employee = Employee.query.all()
-    return render_template('newefilter.html', emp_filter_form = emp_filter_form, emp_skill = emp_skill, employee = employee)
+    return render_template('new_newefilter.html', emp_filter_form = emp_filter_form, emp_skill = emp_skill, employee = employee)
 
 @filtr.route('/efilter/<skill>')
 def exp(skill):

@@ -2,12 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Skill dashboard</title>
+     <div style="margin-left:0.2%%; height: 5%;">
+      <img src="https://media-exp1.licdn.com/dms/image/C510BAQEdUdCiIiDiTQ/company-logo_200_200/0?e=2159024400&v=beta&t=ASmV3FDXKuTfeeBwuIV8wK2hhT2Uko-x1dR5OUs-ZtM" style="width: 9.5%; height: 6%;" style="width: 9.5%;"></img>
+      <div style="margin-left:10%; height: 20%;">
+        <h4 style="background-color:teal;margin-top: -10%;height: 5%;color: white;font-family: 'Times New Roman', Times, serif;font-size:x-large;padding: 0.5%;">SKILL DASHBOARD</h4>
 
-    <form method="post">
-        <br>{{skill_search_form.skill_select.label}}
-        <br>{{skill_search_form.skill_select}}
-        <br><input type = "submit">
+
+</head>
+<body>
+<style>
+
+#skill {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+#skill td{
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#skill tr:nth-child(odd){background-color: #f2f2f2;}
+#skill tr:hover {background-color: #ddd;}
+
+</style>
+
+<form method="post" style=" text-align:center">
+    <h1 style="text-align:center">{{skill_search_form.skill_select.label}}</h1>
+    <h1>{{skill_search_form.skill_select}}</h1>
+    <input type = "submit" style="width:10%; paddding:2%" >
     </form>
 <!--    new_proj_skill-->
 <!--    graph_emp_skill-->
@@ -70,8 +93,6 @@
       }
     </script>
 {% endif %}
-</head>
-<body>
 
 {% if new_proj_skill %}
 
@@ -79,33 +100,64 @@
         <br><br><br>{{i.skill_name}}<br>
                                      <img src="/static/{{i.skill_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
 
+<table id="skill">
+    <tr>
+        <th>
+          Total Projects employing this skill:
+        </th>
+        <th>
+            Total Employees employing this skill:
+        </th>
+        <th>
+         Average Employee skill rating:
+        </th>
+        <th>
+           Average Project Present Skill Rating:
+        </th>
+        <th>
+            Average Project Rated Skill Rating:
+        </th>
+    </tr>
+    <tr>
+        <td>
         {% for j in proj_skill %}
             {% if i.skill_id == j.skill_id %}
-                <br>Total Projects employing this skill:{{j.ptotal}}
+                <br>{{j.ptotal}}
             {% endif %}
         {% endfor %}
+        </td>
+        <td>
         {% for j in emp_skill %}
             {% if i.skill_id == j.skill_id %}
-                <br>Total Employees employing this skill:{{j.etotal}}
+                <br>{{j.etotal}}
             {% endif %}
         {% endfor %}
+        </td>
+        <td>
         {% for j in emp_avgskill %}
             {% if i.skill_id == j.skill_id %}
-                <br>Average Employee skill rating:{{j.askill}}
+                <br>{{j.askill}}
             {% endif %}
         {% endfor %}
+        </td>
+        <td>
         {% for j in proj_prsent_avgskill %}
             {% if i.skill_id == j.skill_id %}
-                <br>Average Project Present Skill Rating:{{j.proj_prsent_avgskill}}
+                <br>{{j.proj_prsent_avgskill}}
             {% endif %}
         {% endfor %}
+        </td>
+        <td>
         {% for j in proj_rated_avgskill %}
             {% if i.skill_id == j.skill_id %}
-                <br>Average Project Rated Skill Rating:{{j.proj_rated_avgskill}}
+                <br>{{j.proj_rated_avgskill}}
             {% endif %}
         {% endfor %}
+        </td>
     {% endfor %}
 {% endif %}
+    </tr>
+</table>
      <table class="columns">
             <tr>
 <td>

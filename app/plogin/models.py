@@ -50,6 +50,13 @@ class Skill(db.Model):
         self.skill_name = skill_name
         self.skill_id = skill_id
         self.skill_image = skill_image
+
+
+    def getskillid(self):
+        return self.skill_id
+
+    def getskillname(self):
+        return self.skill_name
     #
     # def __repr__(self):
     #     return 'The project id and name is {} and {}'.format(self.skill_id,self.skill_name)

@@ -36,7 +36,7 @@ def pm_pdetails(pid):
     project = Project.query.filter_by(proj_id =  pid ).first()
     ls = [proj_skill[i].getpSkillId() for i in range(0,len(proj_skill))]
     pskill = Skill.query.filter(Skill.skill_id.in_(ls)).all()
-    return render_template('pm_proj_skill.html', proj_skill=proj_skill, project = project, pskill = pskill, empl = empl)
+    return render_template('new_pm_proj_skill.html', proj_skill=proj_skill, project = project, pskill = pskill, empl = empl)
 
 @pdash.route('/pm/projects/employee/<eid>', methods = ['GET','POST'])
 def pm_edetails(eid):
@@ -44,7 +44,9 @@ def pm_edetails(eid):
     location = Location.query.all()
     employee = Employee.query.filter_by(emp_id = eid).first()
     emp_skill = Emp_skill.query.filter_by(emp_id = eid).all()
-    lr_edit_form.skill_select.choices = [(emp_skill[i].geteSkillId(),emp_skill[i].geteSkillId()) for i in range(0,len(emp_skill))]
+    ls = [emp_skill[i].geteSkillId() for i in range(0,len(emp_skill))]
+    eskill = Skill.query.filter(Skill.skill_id.in_(ls)).all()
+    lr_edit_form.skill_select.choices = [(eskill[i].getskillid(),eskill[i].getskillname()) for i in range(0,len(eskill))]
 
     # print(lr_edit_form.skill_select.choices)
     if request.method == 'POST':
@@ -67,7 +69,7 @@ def pm_edetails(eid):
     lt = [emp_cert[i].geteCertId() for i in range(0, len(emp_cert))]
     ecert = Certification.query.filter(Certification.cert_id.in_(lt)).all()
     avgskill = db.session.query(Emp_skill.skill_id,label('askill',func.avg(Emp_skill.final_rating))).group_by(Emp_skill.skill_id).all()
-    return render_template('pm_emp_skills.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill, Project = Project, location = location, lr_edit_form = lr_edit_form)
+    return render_template('new_pm_emp_skills.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill, Project = Project, location = location, lr_edit_form = lr_edit_form)
 
 @pdash.route('/pm/projects/search/employee/<eid>', methods = ['GET','POST'])
 def pm_srch_edetails(eid):
@@ -98,7 +100,7 @@ def pm_srch_edetails(eid):
     lt = [emp_cert[i].geteCertId() for i in range(0, len(emp_cert))]
     ecert = Certification.query.filter(Certification.cert_id.in_(lt)).all()
     avgskill = db.session.query(Emp_skill.skill_id,label('askill',func.avg(Emp_skill.final_rating))).group_by(Emp_skill.skill_id).all()
-    return render_template('pm_srch_emp_skills.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill, Project = Project, location = location, lr_edit_form = lr_edit_form)
+    return render_template('new_pm_srch_emp_skills.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill, Project = Project, location = location, lr_edit_form = lr_edit_form)
 
 
 @pdash.route('/project/<pid>', methods = ['GET','POST'])
@@ -116,7 +118,7 @@ def pdetails(pid):
     project = Project.query.filter_by(proj_id =  pid ).first()
     ls = [proj_skill[i].getpSkillId() for i in range(0,len(proj_skill))]
     pskill = Skill.query.filter(Skill.skill_id.in_(ls)).all()
-    return render_template('proj_skill.html', proj_skill=proj_skill, project = project, pskill = pskill, empl = empl)
+    return render_template('new_proj_skill.html', proj_skill=proj_skill, project = project, pskill = pskill, empl = empl)
 
 
 @pdash.route('/emp/employee/<eid>', methods = ['GET','POST'])
@@ -125,8 +127,9 @@ def emp_edetails(eid):
     location = Location.query.all()
     employee = Employee.query.filter_by(emp_id = eid).first()
     emp_skill = Emp_skill.query.filter_by(emp_id = eid).all()
-    sr_edit_form.skill_select.choices = [(emp_skill[i].geteSkillId(),emp_skill[i].geteSkillId()) for i in range(0,len(emp_skill))]
-
+    ls = [emp_skill[i].geteSkillId() for i in range(0,len(emp_skill))]
+    eskill = Skill.query.filter(Skill.skill_id.in_(ls)).all()
+    sr_edit_form.skill_select.choices = [(eskill[i].getskillid(),eskill[i].getskillname()) for i in range(0,len(eskill))]
     # print(lr_edit_form.skill_select.choices)
     if request.method == 'POST':
         new_emp_skill = Emp_skill.query.filter_by(emp_id=eid).filter_by(skill_id=sr_edit_form.skill_select.data).first()
@@ -134,10 +137,10 @@ def emp_edetails(eid):
         new_emp_skill.self_eval_rating = new_sr_edit_form.self_rating.data
         db.session.add(new_emp_skill)
         db.session.commit()
-    for i in emp_skill:
-        i.final_rating = i.proj_lead_rating + i.self_eval_rating + i.experience
-        db.session.add(i)
-        db.session.commit()
+        for i in emp_skill:
+            i.final_rating = i.proj_lead_rating + i.self_eval_rating + i.experience
+            db.session.add(i)
+            db.session.commit()
     ls = [emp_skill[i].geteSkillId() for i in range(0,len(emp_skill))]
     eskill = Skill.query.filter(Skill.skill_id.in_(ls)).all()
     pr = employee.geteProjID()
@@ -146,7 +149,7 @@ def emp_edetails(eid):
     lt = [emp_cert[i].geteCertId() for i in range(0, len(emp_cert))]
     ecert = Certification.query.filter(Certification.cert_id.in_(lt)).all()
     avgskill = db.session.query(Emp_skill.skill_id,label('askill',func.avg(Emp_skill.final_rating))).group_by(Emp_skill.skill_id).all()
-    return render_template('emp_emp_skills.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill, Project = Project, location = location, sr_edit_form = sr_edit_form)
+    return render_template('new_emp_emp_skills.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill, Project = Project, location = location, sr_edit_form = sr_edit_form)
 
 @pdash.route('/emp/project/<pid>', methods = ['GET','POST'])
 def emp_pdetails(pid):
@@ -163,7 +166,7 @@ def emp_pdetails(pid):
     project = Project.query.filter_by(proj_id =  pid ).first()
     ls = [proj_skill[i].getpSkillId() for i in range(0,len(proj_skill))]
     pskill = Skill.query.filter(Skill.skill_id.in_(ls)).all()
-    return render_template('emp_proj_skill.html', proj_skill=proj_skill, project = project, pskill = pskill, empl = empl)
+    return render_template('new_emp_proj_skill.html', proj_skill=proj_skill, project = project, pskill = pskill, empl = empl)
 
 
 @pdash.route('/employee/<eid>', methods = ['GET','POST'])
@@ -195,7 +198,7 @@ def edetails(eid):
     lt = [emp_cert[i].geteCertId() for i in range(0, len(emp_cert))]
     ecert = Certification.query.filter(Certification.cert_id.in_(lt)).all()
     avgskill = db.session.query(Emp_skill.skill_id,label('askill',func.avg(Emp_skill.final_rating))).group_by(Emp_skill.skill_id).all()
-    return render_template('emp_skills.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill, Project = Project, location = location, lr_edit_form = lr_edit_form)
+    return render_template('new_emp_skills.html', employee = employee, emp_skill = emp_skill,eskill = eskill, projt = projt,ecert = ecert, avgskill = avgskill, Project = Project, location = location, lr_edit_form = lr_edit_form)
 
 
 
@@ -206,7 +209,7 @@ def emp_allproj():
     project = Project.query.all()
     proj_skill = Proj_skill.query.all()
     skill = Skill.query.all()
-    return render_template('emp_all_proj.html', project = project, proj_skill = proj_skill, skill = skill)
+    return render_template('new_emp_all_proj.html', project = project, proj_skill = proj_skill, skill = skill)
 
 
 @pdash.route('/allprojects')
@@ -246,7 +249,7 @@ def auth_sdetails():
         graph_emp_skill = Emp_skill.query.filter_by(skill_id = skill_search_form.skill_select.data).all()
         lr = [graph_emp_skill[i].getEmpId() for i in range(0,len(graph_emp_skill))]
         graph_employee = Employee.query.filter(Employee.emp_id.in_(lr)).all()
-    return render_template('auth_skill_dash.html', skill= skill,proj_skill=proj_skill,emp_skill=emp_skill,emp_avgskill=emp_avgskill, proj_prsent_avgskill=proj_prsent_avgskill,proj_rated_avgskill=proj_rated_avgskill, project = project, new_proj_skill = new_proj_skill, graph_emp_skill = graph_emp_skill, graph_employee = graph_employee, skill_search_form = skill_search_form)
+    return render_template('Skill_dashboard_1803.html', skill= skill,proj_skill=proj_skill,emp_skill=emp_skill,emp_avgskill=emp_avgskill, proj_prsent_avgskill=proj_prsent_avgskill,proj_rated_avgskill=proj_rated_avgskill, project = project, new_proj_skill = new_proj_skill, graph_emp_skill = graph_emp_skill, graph_employee = graph_employee, skill_search_form = skill_search_form)
 
 
 
@@ -279,7 +282,7 @@ def auth_ldetails():
         employee = Employee.query.filter_by(loc_id=loc_search_form.loc_select.data).all()
         ls = [employee[i].geteID() for i in range(0, len(employee))]
         emp_skill = db.session.query(Emp_skill.skill_id, label('no_emp', func.count(Emp_skill.emp_id))).filter(Emp_skill.emp_id.in_(ls)).group_by(Emp_skill.skill_id).all()
-    return render_template('auth_loc_dash.html', emp_skill=emp_skill, skill=skill, loc_search_form = loc_search_form)
+    return render_template('new_auth_loc_dash.html', emp_skill=emp_skill, skill=skill, loc_search_form = loc_search_form)
 
 
 @pdash.route('/location/<lid>', methods = ['GET','POST'])
@@ -293,8 +296,8 @@ def ldetails(lid):
     # for i in emp_skill:
     #     print(i.skill_id)
     #     print(i.no_emp)
-    return render_template('loc_dash.html', emp_skill = emp_skill , skill = skill)
+    return render_template('new_auth_loc_dash.html', emp_skill = emp_skill , skill = skill)
 
 @pdash.route('/auth')
 def auth():
-    return render_template('auth_db.html')
+    return render_template('new_auth_db.html')

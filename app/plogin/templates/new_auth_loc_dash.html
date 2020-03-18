@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Location Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% if emp_skill %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Skill Name', 'No of Employees'],
+        {% for i in emp_skill %}
+            {% for j in skill %}
+                {% if i.skill_id == j.skill_id %}
+                     ['{{j.skill_name}}',{{i.no_emp}}],
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        ]);
+
+        var options = {
+          chart: {
+            title: 'skill wise distribution of employees',
+            subtitle: '',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+      </script>
+    {% endif %}
+    <style>
+      .login-box{
+    width: 500px;
+    height: 260px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    margin-top:-15%
+}
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+body{
+  background-color:maroon;
+}
+    </style>
+</head>
+<body>
+  <div class="login-box">
+    <img src="https://media-exp1.licdn.com/dms/image/C510BAQEdUdCiIiDiTQ/company-logo_200_200/0?e=2159024400&v=beta&t=ASmV3FDXKuTfeeBwuIV8wK2hhT2Uko-x1dR5OUs-ZtM"  class="avatar">
+        <h1 style="color: whitesmoke;">Choose the Location</h1>
+          <form method="post">
+            <br>{{loc_search_form.loc_select.label}}
+            <br>{{loc_search_form.loc_select}}
+            <br><button type = "submit"class="btn btn-success">Submit</button>
+          </form>
+          </div>
+<table class="columns">
+  <tr>
+    <td>
+      <div id="columnchart_material" style="width: 500px; height: 300px ;margin-top:70%;margin-left:30%"></div>
+    </td>
+  
+    <td>
+      <div id="columnchart_material1" style="width: 800px; height: 500px;"></div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

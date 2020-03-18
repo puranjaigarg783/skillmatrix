@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Project dashboard</title>
+</head>
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+#skill {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+#skill td{
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#skill tr:nth-child(odd){background-color: #f2f2f2;}
+#skill tr:hover {background-color: #ddd;}
+</style>
+    <img src="https://media-exp1.licdn.com/dms/image/C510BAQEdUdCiIiDiTQ/company-logo_200_200/0?e=2159024400&v=beta&t=ASmV3FDXKuTfeeBwuIV8wK2hhT2Uko-x1dR5OUs-ZtM" style="width: 9.5%; height: 6%;" style="width: 9.5%;"></img>
+      <div style="margin-left:10%; height: 20%;">
+        <h4 style="background-color:teal;margin-top: -10%;height: 5%;color: white;font-family: 'Times New Roman', Times, serif;font-size:x-large;padding: 0.5%;">PROJECT DASHBOARD</h4>
+       
+        <table style="width: 100%;padding: 0.5%">
+
+            <td>
+                <h1 style="font-size: medium;">Project Lead :lead name</h1>
+            </td>
+
+            <td>
+              <h1 style="font-size: medium;">Project ID :{{project.proj_id}}</h1>
+            </td>
+
+            <td>
+            <h1 style="font-size: medium">Project Name:{{project.proj_name}}</h1>
+              <img src="/static/{{project.proj_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></h4>
+            </td>
+          
+          
+            <td>
+              <img src="/static/projbck.png" alt="emp-img" height="85%" width="190" class="img-rounded"></h4>
+              <p> Hey! lead</p>   
+            </td>
+        </table>
+
+
+
+
+         <div style="background-color: white;margin-left:-11%;widows: 100%;;background-color: skyblue;height: 5%;margin-top: 5%;padding-left:0%;">
+             <h4 class="head" style="color:white;font-family: 'Times New Roman', Times, serif;font-size: x-large;background-color:teal;padding: 0.5%;"> SKILL SET </h4>
+         </div>
+
+        {% for i in proj_skill %}
+            {% for j in pskill %}
+                {% if i.skill_id == j.skill_id %}
+         <table id="skill" ; style="width: 80%; border: none;">
+
+        <h2 style="font-family: 'Times New Roman', Times, serif;font-size: x-large;font-style:italic;font-weight:bold;">{{j.skill_name}}<br>
+                                         <img src="/static/{{j.skill_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+</h2>
+                {% endif %}
+            {% endfor %}
+             <table id="skill" ; style="width: 90%; border: none;">
+                <tr>
+                    <th style="text-align: center;">Skill ID:</th>
+                    <th style="text-align: center;">Skill Expertise:</th>
+                    <th style="text-align: center;">Reqruired V/s Available:</th>
+                </tr>
+            <tr>
+             <td>
+             <div class="w3-badge w3-blue">{{i.skill_id}}</div>
+        </td>
+        <td>
+            <div style="padding: 1%">{{i.skill_range}}</div>
+        </td>
+        <td>
+<div class="container">
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="50" style="width:{{i.proj_rated_rating}}%">
+      {{i.proj_rated_rating}}%
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="50" style="width:{{i.proj_prsent_skill_rating}}%">
+      {{i.proj_prsent_skill_rating}}%
+    </div>
+  </div>
+</div>
+        </td>
+        {% endfor %}
+    </table>
+        <div style="background-color: white;margin-left:-11%;widows: 100%;;background-color:skyblue;height: 5%;margin-top: 5%;padding-left:0%;">
+            <h4 class="head" style="color:white;font-family: 'Times New Roman', Times, serif;font-size: x-large;background-color: teal;padding: 0.5%;"> PROJECT TEAM  </h4>
+            </div>
+        {% for i in empl %}
+            <p><a href="{{ url_for('pdash.pm_edetails',eid = i.emp_id)}}">{{i.emp_name}}</a><br>
+                                             <img src="/static/{{i.emp_image}}" alt="emp-img" height="200" width="190" class="img-rounded"></a></h4>
+</p>
+        {% endfor %}
+         <br><br>
+         <p style="margin-left:30%"><a href="{{ url_for('filtr.pm_efilter')}}" class="w3-btn w3-teal w3-xlarge"><i class="w3-margin-left"></i> <i class=" fa fa-search"> </i>Search Employees by Skill</a> </p>
+      
+
+</body>
+</html>

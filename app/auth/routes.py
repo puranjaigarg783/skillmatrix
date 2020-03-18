@@ -22,7 +22,7 @@ def log_in():
             return  redirect(url_for('pdash.pm_pdetails',pid = project.getprojid()))
         elif emp_details.getauth() == 0:
             return redirect(url_for('pdash.auth'))
-    return render_template('namalogin.html', login_form = login_form)
+    return render_template('namalogin2.html', login_form = login_form)
 
 
 
