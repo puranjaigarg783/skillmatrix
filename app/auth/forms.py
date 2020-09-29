@@ -9,6 +9,6 @@ class Login_form(FlaskForm):
     log_pw = PasswordField('Password', validators = [DataRequired()])
     stay_loggedin = BooleanField('stay logged-in')
     submit = SubmitField('Login')
-
+# This is a test
 
 
